@@ -42,6 +42,8 @@ Route::get('concept_nodes/create_view', 'ConceptNodeController@getCreateView'); 
 Route::post('concept_nodes/create', 'ConceptNodeController@create');
 Route::post('concept_nodes/create_from_view', 'ConceptNodeController@createFromView');
 Route::get('concept_nodes/user/added_view', 'ConceptNodeController@getAddedView');
+Route::get('concept_nodes/edit_concept_node_view/{id}', 'ConceptNodeController@getEditConceptNodeView');
+Route::post('concept_nodes/edit_from_view/{id}', 'ConceptNodeController@editConceptNodeFromView');
 
 Route::get('concept_nodes/search/user', 'ConceptNodeController@searchConceptNodesByUser');
 Route::get('concept_nodes/search/{keyword}', 'ConceptNodeController@searchConceptNodes');
@@ -60,6 +62,7 @@ Route::post('user', 'UserController@create');
 Route::post('user/login', 'UserController@check');
 Route::post('user/logout', 'UserController@logout');
 
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

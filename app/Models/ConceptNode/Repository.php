@@ -38,4 +38,9 @@ class Repository
         }
         return $results;
     }
+
+    public function update(Entity $conceptNode)
+    {
+        $conceptNode->saveOrFail();
+    }
 }

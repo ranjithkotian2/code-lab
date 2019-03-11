@@ -67,6 +67,14 @@ class Service
         return $conceptNodes;
     }
 
+    public function update(array $input, string $id)
+    {
+        $conceptNode = $this->entityRepo->fetch($id);
+        $conceptNode->fill($input);
+        $this->entityRepo->update($conceptNode);
+        return $conceptNode;
+    }
+
     protected function getViewSerialized(array $conceptNodes)
     {
         $result = [];

@@ -87,4 +87,20 @@ class ConceptNodeController extends Controller
 
         return response()->json($data);
     }
+
+    public function getEditConceptNodeView(string $id)
+    {
+        $payload = ['data' => $this->service->fetchConceptNode($id)];
+
+        return View::make('edit_concept_node', $payload);
+    }
+
+    public function editConceptNodeFromView(string $id)
+    {
+        $input = Request::all();
+
+        $data = $this->service->update($input, $id);
+
+        return view::make('profile', []);
+    }
 }

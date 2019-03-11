@@ -249,12 +249,12 @@
             newNode.classList.add("links");
             newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
                 conceptNode['name']
-                +"</h1><button id = 'edit_bt' value='"+ conceptNode['id'] +"' onclick='loadEditPage(" + conceptNode['id'] + ")'>edit</button></a>";
+                +"</h1></a><button id = 'edit_bt' value='"+ conceptNode['id'] +"' onclick='loadEditPage(" + conceptNode['id'] + ")'>edit</button>";
             parent.appendChild(newNode);
         }
 
         function loadEditPage(id) {
-            alert(id);
+            document.location.href = "http://127.0.0.1:8000/concept_nodes/edit_concept_node_view/" + id;
         }
     </script>
 </body>

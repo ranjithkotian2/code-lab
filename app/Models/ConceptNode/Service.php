@@ -2,6 +2,8 @@
 
 namespace App\Models\ConceptNode;
 
+use App\Models\User;
+
 class Service
 {
     protected $entityRepo;
@@ -28,6 +30,8 @@ class Service
     public function create(array $input)
     {
         $conceptNode = new Entity();
+        $user = $this->getUserFromSession();
+        $conceptNode->user()->associate($user);
         $conceptNode->fill($input);
         $this->entityRepo->create($conceptNode);
         return $conceptNode;
@@ -65,5 +69,14 @@ class Service
                         ];
         }
         return $result;
+    }
+
+    protected function getUserFromSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $userId = $_SESSION['id'];
+        return (new User\Service())->fetch($userId);
     }
 }

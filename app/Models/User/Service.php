@@ -39,14 +39,7 @@ class Service
 
     }
 
-    public function fetchConceptNodes(): array
-    {
-        $entities = $this->entityRepo->fetchAll();
-
-        return $entities->toArray();
-    }
-
-    public function fetchConceptNode(string $id)
+    public function fetch(string $id)
     {
         $entity = $this->entityRepo->fetch($id);
 

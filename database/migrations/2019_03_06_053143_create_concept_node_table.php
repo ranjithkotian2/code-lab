@@ -15,9 +15,10 @@ class CreateConceptNodeTable extends Migration
      */
     public function up()
     {
-        Schema::create('concept_node', function (Blueprint $table) {
+        Schema::create('concept_nodes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string(Entity::USER_ID);
             $table->string('name');
             $table->integer(Entity::DELETED_AT)
                   ->nullable();

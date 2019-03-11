@@ -5,11 +5,14 @@ namespace App\Models\ConceptNode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+
 class Entity extends Model
 {
     use SoftDeletes;
 
     const ID                = 'id';
+    const USER_ID           = 'user_id';
     const NAME              = 'name';
     const DESCRIPTION       = 'description';
     const PROBLEM_STATEMENT = 'problem_statement';
@@ -22,10 +25,11 @@ class Entity extends Model
     const UPDATED_AT        = 'updated_at';
     const DELETED_AT        = 'deleted_at';
 
-    protected $table = 'concept_node';
+    protected $table = 'concept_nodes';
 
     protected $visible = [
         self::ID,
+        self::USER_ID,
         self::NAME,
         self::DESCRIPTION,
         self::PROBLEM_STATEMENT,
@@ -40,6 +44,7 @@ class Entity extends Model
 
     protected $public = [
         self::ID,
+        self::USER_ID,
         self::NAME,
         self::DESCRIPTION,
         self::PROBLEM_STATEMENT,
@@ -72,4 +77,9 @@ class Entity extends Model
         self::PROVIDED_CODE => null,
         self::EXPECTED_OUTPUT => null,
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User\Entity::class);
+    }
 }

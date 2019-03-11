@@ -5,7 +5,7 @@ namespace App\Models\ConceptNode;
 
 class Repository
 {
-    protected $table = 'concept_node';
+    protected $table = 'concept_nodes';
 
     public function fetchAll()
     {

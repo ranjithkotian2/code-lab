@@ -1,0 +1,62 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', 'ConceptNodeController@getSearchPage');
+Route::get('concept_node/view/{id}', 'ConceptNodeController@fetchConceptNodeView');
+
+Route::get('/add_concept_node', function () {
+	return view('add_concept_node');
+});
+
+Route::get('/sign_up', function () {
+    return view('sign_up');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/concept_nodes/view/{id}', 'ConceptNodeController@getConceptNodeView');
+
+Route::get('/editor', function () {
+    return view('editor');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
+Route::get('concept_nodes', 'ConceptNodeController@fetchConceptNodes');
+Route::get('concept_nodes/create_view', 'ConceptNodeController@getCreateView');  //todo
+Route::post('concept_nodes/create', 'ConceptNodeController@create');
+Route::post('concept_nodes/create_from_view', 'ConceptNodeController@createFromView');
+
+Route::get('concept_nodes/search/{keyword}', 'ConceptNodeController@searchConceptNodes');
+Route::get('concept_nodes/{id}', 'ConceptNodeController@fetchConceptNode');
+
+Route::get("/*", function() {
+    ob_start();
+    require(path("public")."testFile.php");
+    return ob_get_clean();
+});
+
+Route::post('code/test', 'CodeController@test');
+
+Route::post('user', 'UserController@create');
+Route::post('user/login', 'UserController@check');
+Route::post('user/logout', 'UserController@logout');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -75,4 +75,16 @@ class ConceptNodeController extends Controller
         $payload = ['data' => $this->service->fetchConceptNode($id)];
         return View::make('concept_node', $payload);
     }
+
+    public function getAddedView()
+    {
+        return View::make('added_concept_nodes');
+    }
+
+    public function searchConceptNodesByUser()
+    {
+        $data = $this->service->searchConceptNodesByUser();
+
+        return response()->json($data);
+    }
 }

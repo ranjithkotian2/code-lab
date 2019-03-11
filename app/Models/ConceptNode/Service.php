@@ -59,6 +59,14 @@ class Service
         return $result;
     }
 
+    public function searchConceptNodesByUser()
+    {
+        $user = $this->getUserFromSession();
+        $conceptNodes = $this->entityRepo->fetchByUser($user);
+
+        return $conceptNodes;
+    }
+
     protected function getViewSerialized(array $conceptNodes)
     {
         $result = [];

@@ -32,7 +32,7 @@
     </style>
     <button id="logout" onclick="logout()">Logout</button>
     <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
-    <button id="added_concept_nodes">Concept Nodes Added By You</button>
+    <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
 
     <script>
         function logout() {
@@ -54,6 +54,10 @@
 
         function routeToHome() {
             document.location.href = "http://127.0.0.1:8000/";
+        }
+
+        function loadAddedConceptNode() {
+            document.location.href = "http://127.0.0.1:8000/concept_nodes/user/added_view";
         }
     </script>
 @endsection

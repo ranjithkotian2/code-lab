@@ -41,8 +41,11 @@ Route::get('concept_nodes', 'ConceptNodeController@fetchConceptNodes');
 Route::get('concept_nodes/create_view', 'ConceptNodeController@getCreateView');  //todo
 Route::post('concept_nodes/create', 'ConceptNodeController@create');
 Route::post('concept_nodes/create_from_view', 'ConceptNodeController@createFromView');
+Route::get('concept_nodes/user/added_view', 'ConceptNodeController@getAddedView');
 
+Route::get('concept_nodes/search/user', 'ConceptNodeController@searchConceptNodesByUser');
 Route::get('concept_nodes/search/{keyword}', 'ConceptNodeController@searchConceptNodes');
+
 Route::get('concept_nodes/{id}', 'ConceptNodeController@fetchConceptNode');
 
 Route::get("/*", function() {

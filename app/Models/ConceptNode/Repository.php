@@ -2,6 +2,7 @@
 
 namespace App\Models\ConceptNode;
 
+use App\Models\User;
 
 class Repository
 {
@@ -22,5 +23,19 @@ class Repository
     public function create(Entity $conceptNode)
     {
         $conceptNode->saveOrFail();
+    }
+
+    public function fetchByUser(User\Entity $user)
+    {
+        $conceptNodes = Entity::all();
+        $results = [];
+        foreach ($conceptNodes as $conceptNode)
+        {
+            if($conceptNode[Entity::USER_ID] == $user->getAttribute(User\Entity::ID))
+            {
+                $results[] = $conceptNode;
+            }
+        }
+        return $results;
     }
 }

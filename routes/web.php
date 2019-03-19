@@ -47,8 +47,12 @@ Route::post('concept_nodes/edit_from_view/{id}', 'ConceptNodeController@editConc
 
 Route::get('concept_nodes/search/user', 'ConceptNodeController@searchConceptNodesByUser');
 Route::get('concept_nodes/search/{keyword}', 'ConceptNodeController@searchConceptNodes');
+Route::get('concept_nodes/search/', 'ConceptNodeController@fetchConceptNodes');
 
 Route::get('concept_nodes/{id}', 'ConceptNodeController@fetchConceptNode');
+
+Route::get('dependencies/get_add_dependency_view/{id}', 'DependencyController@getAddDependencyView');
+Route::post('dependencies/get_add_dependency_view/{id}/{dependencyId}', 'DependencyController@addDependency');
 
 Route::get("/*", function() {
     ob_start();

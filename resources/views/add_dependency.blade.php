@@ -1,6 +1,5 @@
-<html>
+@include('layouts.session_auth')
 
-<body>
 <style type="text/css" media="screen">
     #editor {
         width: 615px;
@@ -189,7 +188,8 @@
     #content{
         padding: 40px;
     }
-    #edit_bt, #update_bt{
+
+    #search_bt, .update_bt{
         box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
         border: 0;
         border-radius: 5px;
@@ -209,59 +209,90 @@
         box-sizing: border-box;
         align-items: flex-start;
     }
-    #edit_bt:hover, #update_bt:hover{
+    #search_bt:hover, #update_bt:hover{
         background-color: #1d68a7;
     }
+    #search_bt{
+        padding: 21px;
+    }
 </style>
-    <div id="content">
 
-    </div>
-    <script>
-        fetchResults();
-        function fetchResults() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    clearPage();
-                    var res = JSON.parse(this.responseText);
-                    for(var i = 0; i < res.length; i++)
-                    {
-                        addConceptNode(res[i]);
-                    }
+<h1>{{$conceptNode['name']}}</h1>
+
+<input type="text" name="" id="search_bar">
+<button onclick="fetchConceptNodes()" id="search_bt">Search</button>
+
+<div id="content"></div>
+
+<script>
+    var input = document.getElementById("search_bar");
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("search_bt").click();
+        }
+    });
+
+    function fetchConceptNodes()
+    {
+        const keyword = document.getElementById("search_bar").value;
+        //alert(keyword);
+        getSearchResults(keyword);
+    }
+
+    function getSearchResults(keyword) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                clearPage();
+                var res = JSON.parse(this.responseText);
+                for(var i = 0; i < res.length; i++)
+                {
+                    addConceptNode(res[i]);
                 }
-            };
-            xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/search/user", true);
-            // xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send();
-        }
+            }
+        };
+        xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/search/" + keyword, true);
+        // xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
+    }
 
-        function clearPage() {
-            document.getElementById("content").innerHTML = "";
-            var superParent = document.getElementById("content");
-            var parent = document.createElement('nodes');
-            parent.id = "nodes";
-            superParent.appendChild(parent);
-        }
+    function clearPage() {
+        document.getElementById("content").innerHTML = "";
+        var superParent = document.getElementById("content");
+        var parent = document.createElement('nodes');
+        parent.id = "nodes";
+        superParent.appendChild(parent);
+    }
 
-        function addConceptNode(conceptNode) {
-            var parent = document.getElementById("nodes");
-            var newNode = document.createElement('div');
-            newNode.classList.add("links");
-            newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
-                conceptNode['name']
-                + "</h1></a><button id = 'edit_bt' value='"+ conceptNode['id'] +"' onclick='loadEditPage(" + conceptNode['id'] + ")'>edit</button>"
-                +"<button id = 'update_bt' value='"+ conceptNode['id'] +"' onclick='loadAddDependencyPage(" + conceptNode['id'] + ")'>Add Dependency</button>";
-            parent.appendChild(newNode);
-        }
+    function addConceptNode(conceptNode) {
+        var parent = document.getElementById("nodes");
+        var newNode = document.createElement('div');
+        newNode.classList.add("links");
+        newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
+            conceptNode['name']
+            +"</h1></a>" +
+            "<button class = 'update_bt' id = 'bt" + conceptNode['id'] + "' value='"+ conceptNode['id'] +"' onclick='addDependency(" + conceptNode['id'] + ")'>Add</button>";
+        parent.appendChild(newNode);
+    }
 
-        function loadEditPage(id) {
-            document.location.href = "http://127.0.0.1:8000/concept_nodes/edit_concept_node_view/" + id;
-        }
-
-        function loadAddDependencyPage(id) {
-            document.location.href = "http://127.0.0.1:8000/dependencies/get_add_dependency_view/" + id;
-        }
-    </script>
-</body>
-
-</html>
+    function addDependency(dependencyId) {
+        id = "{{$conceptNode['id']}}";
+        bt = document.getElementById("bt" + dependencyId);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //alert(this.responseText);
+                bt.style.background = "blue";
+            }
+        };
+        xhttp.open("POST", "http://127.0.0.1:8000/dependencies/get_add_dependency_view/"+ id +"/" + dependencyId, true);
+        // xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
+    }
+</script>

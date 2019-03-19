@@ -6,12 +6,11 @@ use View;
 use Request;
 
 use App\Models\ConceptNode;
+use App\Models\Dependencies;
 
 class ConceptNodeController extends Controller
 {
     protected $service;
-
-    protected $user;
 
     public function __construct()
     {
@@ -73,6 +72,12 @@ class ConceptNodeController extends Controller
     public function getConceptNodeView(string $id)
     {
         $payload = ['data' => $this->service->fetchConceptNode($id)];
+        $dependencies = (new Dependencies\Service())->getAllDependencyNotCompleted($id);
+        if(empty($dependencies) == false)
+        {
+            return $dependencies;
+        }
+
         return View::make('concept_node', $payload);
     }
 

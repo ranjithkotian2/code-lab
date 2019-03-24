@@ -96,7 +96,7 @@
 
 <script>
     function signUp() {
-        document.location.href = "http://127.0.0.1:8000/sign_up";
+        document.location.href = "http://54.158.36.225:8000/sign_up";
     }
 
     function login() {
@@ -113,13 +113,13 @@
                 routeToHome();
             }
         };
-        xhttp.open("POST", "http://127.0.0.1:8000/user/login", true);
+        xhttp.open("POST", "http://54.158.36.225:8000/user/login", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(data));
     }
     
     function routeToHome() {
-        document.location.href = "http://127.0.0.1:8000/";
+        document.location.href = "http://54.158.36.225:8000/";
     }
 </script>
 

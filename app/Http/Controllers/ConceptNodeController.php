@@ -75,7 +75,7 @@ class ConceptNodeController extends Controller
         $dependencies = (new Dependencies\Service())->getAllDependencyNotCompleted($id);
         if(empty($dependencies) == false)
         {
-            return $dependencies;
+            return View::make('dependency_not_covered', ["dep" => $dependencies]);
         }
 
         return View::make('concept_node', $payload);

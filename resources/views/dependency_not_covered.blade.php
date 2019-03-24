@@ -1,5 +1,3 @@
-@include('layouts.session_auth')
-
 <style type="text/css" media="screen">
     #editor {
         width: 615px;
@@ -188,86 +186,36 @@
     #content{
         padding: 40px;
     }
-
-    #search_bt, .update_bt{
-        box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
-        border: 0;
-        border-radius: 5px;
-        text-align: center;
-        width: 150px;
-        color: #fff;
-        background-color: #5bc0de;
-        display: inline-block;
-        margin-bottom: 0;
-        font-weight: normal;
-        vertical-align: middle;
-        touch-action: manipulation;
-        background-image: none;
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.42857143;
-        box-sizing: border-box;
-        align-items: flex-start;
-    }
-    #search_bt:hover, #update_bt:hover{
-        background-color: #1d68a7;
-    }
-    #search_bt{
-        padding: 21px;
-    }
 </style>
 
-<h1>{{$conceptNode['name']}}</h1>
+<h1>all the dependencies are not covered</h1>
+<h2>please cover:</h2>
 
-<input type="text" name="" id="search_bar">
-<button onclick="fetchConceptNodes()" id="search_bt">Search</button>
+@php
+@endphp
 
-<div id="content"></div>
+<div id="nodes"></div>
+
 
 <script>
-    var input = document.getElementById("search_bar");
-
-    // Execute a function when the user releases a key on the keyboard
-    input.addEventListener("keyup", function(event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("search_bt").click();
+    @php
+        foreach ($dep as $d)
+        {
+            echo "getConceptNode(" . $d . ");";
         }
-    });
-
-    function fetchConceptNodes()
-    {
-        const keyword = document.getElementById("search_bar").value;
-        //alert(keyword);
-        getSearchResults(keyword);
-    }
-
-    function getSearchResults(keyword) {
+    @endphp
+    function getConceptNode(id) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                clearPage();
                 var res = JSON.parse(this.responseText);
-                for(var i = 0; i < res.length; i++)
-                {
-                    addConceptNode(res[i]);
-                }
+                //alert(res.name);
+                addConceptNode(res);
             }
         };
-        xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/search/" + keyword, true);
+        xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/" + id, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
-    }
-
-    function clearPage() {
-        document.getElementById("content").innerHTML = "";
-        var superParent = document.getElementById("content");
-        var parent = document.createElement('nodes');
-        parent.id = "nodes";
-        superParent.appendChild(parent);
     }
 
     function addConceptNode(conceptNode) {
@@ -276,23 +224,7 @@
         newNode.classList.add("links");
         newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
             conceptNode['name']
-            +"</h1></a>" +
-            "<button class = 'update_bt' id = 'bt" + conceptNode['id'] + "' value='"+ conceptNode['id'] +"' onclick='addDependency(" + conceptNode['id'] + ")'>Add</button>";
+            +"</h1></a>";
         parent.appendChild(newNode);
-    }
-
-    function addDependency(dependencyId) {
-        id = "{{$conceptNode['id']}}";
-        bt = document.getElementById("bt" + dependencyId);
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //alert(this.responseText);
-                bt.style.background = "blue";
-            }
-        };
-        xhttp.open("POST", "http://54.158.36.225:8000/dependencies/get_add_dependency_view/"+ id +"/" + dependencyId, true);
-        // xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send();
     }
 </script>

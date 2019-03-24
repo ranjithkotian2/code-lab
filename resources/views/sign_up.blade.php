@@ -73,7 +73,7 @@
 </style>
 <body>
 
-<form style="border:1px solid #ccc" method="post">
+{{--<form style="border:1px solid #ccc" method="post">--}}
     <div class="container">
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
@@ -96,7 +96,7 @@
             <button type="submit" class="signupbtn" onclick="createUser()">Sign Up</button>
         </div>
     </div>
-</form>
+{{--</form>--}}
 
 <script>
     function createUser() {
@@ -113,14 +113,14 @@
                 routeToHome();
             }
         };
-        xhttp.open("POST", "http://127.0.0.1:8000/user", true);
+        xhttp.open("POST", "http://54.158.36.225:8000/user", true);
         xhttp.setRequestHeader("Content-type", "application/json");
 
         xhttp.send(JSON.stringify(data));
     }
     
     function routeToHome() {
-        document.location.href = "http://127.0.0.1:8000/";
+        document.location.href = "http://54.158.36.225:8000/";
     }
 </script>
 

@@ -48,6 +48,7 @@ class ConceptNodeController extends Controller
 
     public function getSearchPage()
     {
+        return "hey";
         $payload = $this->service->getPayload();
         return View::make('home', $payload);
     }

@@ -112,6 +112,10 @@
                 // var result = JSON.parse(this.responseText);
                 routeToHome();
             }
+            else if(this.status == 500)
+            {
+                alert("entered email or password is wrong");
+            }
         };
         xhttp.open("POST", "http://54.158.36.225:8000/user/login", true);
         xhttp.setRequestHeader("Content-type", "application/json");

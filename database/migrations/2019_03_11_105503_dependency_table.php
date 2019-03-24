@@ -20,7 +20,7 @@ class DependencyTable extends Migration
             $table->timestamps();
             $table->string(Dependencies\Entity::CONCEPT_NODE_ID);
             $table->string(Dependencies\Entity::DEPENDENCY_NODE_ID);
-            $table->integer(Entity::DELETED_AT)
+            $table->integer('deleted_at')
                   ->nullable();
         });
     }

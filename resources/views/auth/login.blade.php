@@ -112,7 +112,7 @@
                 // var result = JSON.parse(this.responseText);
                 routeToHome();
             }
-            else if(this.status == 500)
+            else if(this.readyState == 4 && this.status == 500)
             {
                 alert("entered email or password is wrong");
             }

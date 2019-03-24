@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/test', "working");
+//Route::get('/test', "working");
 
 Route::get('/', 'ConceptNodeController@getSearchPage');
 Route::get('concept_node/view/{id}', 'ConceptNodeController@fetchConceptNodeView');

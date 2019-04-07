@@ -1,102 +1,101 @@
 <!DOCTYPE html>
-<html>
-<style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    * {box-sizing: border-box}
+<html lang="en">
+<head>
+    <title>Signup </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot_css/util.css">
+    <link rel="stylesheet" type="text/css" href="boot_css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #999999;">
 
-    /* Full-width input fields */
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 15px;
-        margin: 5px 0 22px 0;
-        display: inline-block;
-        border: none;
-        background: #f1f1f1;
-    }
+<div class="limiter">
+    <div class="container-login100">
+        <div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
 
-    input[type=text]:focus, input[type=password]:focus {
-        background-color: #ddd;
-        outline: none;
-    }
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+            <form class="login100-form validate-form">
+					<span class="login100-form-title p-b-59">
+						Sign Up
+					</span>
 
-    hr {
-        border: 1px solid #f1f1f1;
-        margin-bottom: 25px;
-    }
 
-    /* Set a style for all buttons */
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        opacity: 0.9;
-    }
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <span class="label-input100">Email</span>
+                    <input class="input100" type="text" id="email" name="email" placeholder="Email address...">
+                    <span class="focus-input100"></span>
+                </div>
 
-    button:hover {
-        opacity:1;
-    }
 
-    /* Extra styles for the cancel button */
-    .cancelbtn {
-        padding: 14px 20px;
-        background-color: #f44336;
-    }
 
-    /* Float cancel and signup buttons and add an equal width */
-    .cancelbtn, .signupbtn {
-        float: left;
-        width: 50%;
-    }
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <span class="label-input100">Password</span>
+                    <input class="input100" type="text" id="password" name="pass" placeholder="*************">
+                    <span class="focus-input100"></span>
+                </div>
 
-    /* Add padding to container elements */
-    .container {
-        padding: 16px;
-    }
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <span class="label-input100">Repeat Password</span>
+                    <input class="input100" type="text" id="password" name="pass" placeholder="*************">
+                    <span class="focus-input100"></span>
+                </div>
 
-    /* Clear floats */
-    .clearfix::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                </label>
 
-    /* Change styles for cancel button and signup button on extra small screens */
-    @media screen and (max-width: 300px) {
-        .cancelbtn, .signupbtn {
-            width: 100%;
-        }
-    }
-</style>
-<body>
 
-{{--<form style="border:1px solid #ccc" method="post">--}}
-    <div class="container">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required id="email">
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required id="password">
-
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-        <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label>
-
-        <div class="clearfix">
-            <button type="submit" class="signupbtn" onclick="createUser()">Sign Up</button>
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" onclick="createUser()">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-{{--</form>--}}
+</div>
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
 
 <script>
     function createUser() {
@@ -118,11 +117,10 @@
 
         xhttp.send(JSON.stringify(data));
     }
-    
+
     function routeToHome() {
         document.location.href = "http://54.158.36.225:8000/";
     }
 </script>
-
 </body>
 </html>

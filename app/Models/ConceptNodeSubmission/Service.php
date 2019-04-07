@@ -42,6 +42,10 @@ class Service
 
         $conceptNode = (new ConceptNode\Service())->fetchConceptNode($conceptNodeId);
         $input[Entity::CODE] = $conceptNode[ConceptNode\Entity::DEFAULT_CODE];
+        if($conceptNode[ConceptNode\Entity::DEFAULT_CODE] === null)
+        {
+            $input[Entity::CODE] = "// write your code here";
+        }
 
         return $this->create($input);
     }

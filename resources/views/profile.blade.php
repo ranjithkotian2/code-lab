@@ -21,19 +21,29 @@
         #new_concept:hover{
             background: gray;
         }
-        #added_concept_nodes{
+        #added_concept_nodes, #add_super_user, #add_admin{
             background: ghostwhite;
             width: 164px;
             border-radius: 28px;
             height: 52px;
         }
-        #added_concept_nodes:hover{
+        #added_concept_nodes, #add_super_user, #add_admin :hover{
             background: gray;
         }
     </style>
+    <div>
+        <h1>Role: {{$userRole}}</h1>
+    </div>
     <button id="logout" onclick="logout()">Logout</button>
-    <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
-    <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
+    @if($userRole !== 'user')
+        <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
+        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
+    @endif
+
+    @if($userRole === 'admin')
+        <button id="add_super_user" onclick="getAddSuperUserPage()">Add Super User</button>
+        <button id="add_admin" onclick="getAddAdminPage()">Add Admin</button>
+    @endif
 
     <script>
         function logout() {
@@ -59,6 +69,14 @@
 
         function loadAddedConceptNode() {
             document.location.href = "http://54.158.36.225:8000/concept_nodes/user/added_view";
+        }
+
+        function getAddSuperUserPage() {
+            document.location.href = "http://54.158.36.225:8000/add_super_user";
+        }
+
+        function getAddAdminPage() {
+            document.location.href = "http://54.158.36.225:8000/add_admin";
         }
     </script>
 @endsection

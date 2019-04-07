@@ -68,7 +68,9 @@ Route::get("/*", function() {
     return ob_get_clean();
 });
 
-Route::post('code/test', 'CodeController@test');
+Route::post('code/test/{nodeId}', 'CodeController@test');
+
+Route::post('code/submit/{nodeId}', 'CodeController@submit');
 
 Route::post('user', 'UserController@create');
 Route::post('user/login', 'UserController@check');

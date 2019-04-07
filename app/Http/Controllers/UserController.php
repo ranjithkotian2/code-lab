@@ -42,4 +42,12 @@ class UserController extends Controller
         session_start();
         session_destroy();
     }
+
+    public function getProfileView()
+    {
+        session_start();
+        $user = $this->service->getUser($_SESSION["id"]);
+
+        return view('profile', ['userRole' => $user[User\Entity::USER_ROLE]]);
+    }
 }

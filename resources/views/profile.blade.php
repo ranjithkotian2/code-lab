@@ -31,8 +31,10 @@
         }
     </style>
     <button id="logout" onclick="logout()">Logout</button>
-    <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
-    <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
+    @if($userRole !== 'user')
+        <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
+        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
+    @endif
 
     <script>
         function logout() {

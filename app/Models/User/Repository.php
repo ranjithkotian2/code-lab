@@ -13,7 +13,7 @@ class Repository
         return $results;
     }
 
-    public function fetch(string $id)
+    public function fetch(string $id): Entity
     {
         $results = Entity::find($id);
         return $results;

@@ -34,9 +34,7 @@ Route::get('/editor', function () {
     return view('editor');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', 'UserController@getProfileView');
 
 
 Route::get('concept_nodes', 'ConceptNodeController@fetchConceptNodes');

@@ -40,7 +40,7 @@ class Entity extends Model
     ];
 
     protected $defaults = [
-        self::CODE => null,
+        self::CODE => "",
         self::COMPLETED => false,
     ];
 

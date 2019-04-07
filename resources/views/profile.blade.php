@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    hey
     <style>
         #new_concept{
             width: 187px;

@@ -3,6 +3,7 @@
 namespace App\Models\ConceptNodeSubmission;
 
 use App\Models\User;
+use App\Models\ConceptNode;
 
 class Service
 {
@@ -18,6 +19,42 @@ class Service
         $conceptNodeSubmissions = $this->entityRepo->fetchAll();
 
         return $conceptNodeSubmissions->toArray();
+    }
+
+    public function fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId(string $conceptNodeId)
+    {
+        $conceptNodeSubmissions = $this->entityRepo->fetchAll();
+
+        $userId = $this->getUserIdFromSession();
+
+        foreach ($conceptNodeSubmissions as $sub)
+        {
+            if (($sub[Entity::USER_ID] == $userId) and
+                ($sub[Entity::CONCEPT_NODE_ID] == $conceptNodeId))
+            {
+                return $sub;
+            }
+        }
+
+        $input = [];
+        $input[Entity::CONCEPT_NODE_ID] = $conceptNodeId;
+        $input[Entity::COMPLETED] = false;
+
+        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($conceptNodeId);
+        $input[Entity::CODE] = $conceptNode[ConceptNode\Entity::DEFAULT_CODE];
+
+        return $this->create($input);
+    }
+
+    public function updateCodeOfSubmission(string $code, string $conceptNodeId)
+    {
+        $conceptNodeSubmission = $this->fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($conceptNodeId);
+
+        $conceptNodeSubmission->setCode($code);
+
+        $conceptNodeSubmission->saveOrFail();
+
+        return $conceptNodeSubmission;
     }
 
     public function fetchConceptNodeSubmission(string $id): Entity
@@ -44,6 +81,14 @@ class Service
         }
         $userId = $_SESSION['id'];
         return (new User\Service())->fetch($userId);
+    }
+
+    protected function getUserIdFromSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        return $_SESSION['id'];
     }
 
     public function isUserCompleted(string $conceptNodeId): bool

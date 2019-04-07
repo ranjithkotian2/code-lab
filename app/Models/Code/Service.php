@@ -3,7 +3,7 @@
 namespace App\Models\Code;
 
 use App\Models\ConceptNode;
-use App\Models\User\Entity;
+use App\Models\ConceptNodeSubmission;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class Service
@@ -16,6 +16,8 @@ class Service
     public function test(array $input, string $id)
     {
         $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+
+        (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
 
         $this->createFile(
             $conceptNode[ConceptNode\Entity::PROVIDED_CODE] .
@@ -30,6 +32,8 @@ class Service
     public function submit(array $input, string $id)
     {
         $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+
+        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
 
         $out = $this->getOutputAgainstCustomInput($input, $id);
 

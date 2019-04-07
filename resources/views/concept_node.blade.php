@@ -130,8 +130,7 @@
     </div>
 </div>
 <div class="wrapper ml">
-<div id="editor">
-</div>
+<div id="editor">{{$conceptNodeSubmission['code']}}</div>
 <div class="custom">
     <textarea rows="4" cols="50" placeholder="Custom input" id="custom_input"></textarea>
     <button onclick="testCode()" id="test_button">Test</button>

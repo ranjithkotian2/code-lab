@@ -179,6 +179,9 @@
                 <textarea name="expected_output" placeholder="expected output">{{$data['expected_output']}}</textarea>
             </fieldset>
             <fieldset>
+                <textarea name="default_code" placeholder="default code">{{$data['default_code']}}</textarea>
+            </fieldset>
+            <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
             </fieldset>
         </form>

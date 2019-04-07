@@ -28,7 +28,6 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/concept_nodes/view/{id}', 'ConceptNodeController@getConceptNodeView');
 
 Route::get('/editor', function () {
     return view('editor');
@@ -45,6 +44,7 @@ Route::get('/add_admin', function () {
 Route::get('/profile', 'UserController@getProfileView');
 
 
+Route::get('/concept_nodes/view/{id}', 'ConceptNodeController@getConceptNodeView');
 Route::get('concept_nodes', 'ConceptNodeController@fetchConceptNodes');
 Route::get('concept_nodes/create_view', 'ConceptNodeController@getCreateView');  //todo
 Route::post('concept_nodes/create', 'ConceptNodeController@create');

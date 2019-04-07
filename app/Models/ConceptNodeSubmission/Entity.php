@@ -48,4 +48,9 @@ class Entity extends Model
     {
         return $this->belongsTo(User\Entity::class);
     }
+
+    public function setCode(string $code)
+    {
+        $this->setAttribute(self::CODE, $code);
+    }
 }

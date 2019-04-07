@@ -58,4 +58,25 @@ class Service
 
         return $entity;
     }
+
+    public function promoteToAdmin(string $email)
+    {
+        $user = $this->entityRepo->fetchByEmail($email);
+
+        $user->setUserRole(Role::ADMIN);
+
+        $user->saveOrFail();
+    }
+
+    public function promoteToSuperUser(string $email)
+    {
+        $user = $this->entityRepo->fetchByEmail($email);
+
+        if($user->getUserRole() !== Role::ADMIN)
+        {
+            $user->setUserRole(Role::SUPER_USER);
+
+            $user->saveOrFail();
+        }
+    }
 }

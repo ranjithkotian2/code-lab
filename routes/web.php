@@ -34,6 +34,14 @@ Route::get('/editor', function () {
     return view('editor');
 });
 
+Route::get('/add_super_user', function () {
+    return view('add_super_user');
+});
+
+Route::get('/add_admin', function () {
+    return view('add_admin');
+});
+
 Route::get('/profile', 'UserController@getProfileView');
 
 
@@ -65,7 +73,8 @@ Route::post('code/test', 'CodeController@test');
 Route::post('user', 'UserController@create');
 Route::post('user/login', 'UserController@check');
 Route::post('user/logout', 'UserController@logout');
-
+Route::post('user/promote_to_admin/{email}', 'UserController@promoteToAdmin');
+Route::post('user/promote_to_super_user/{email}', 'UserController@promoteToSuperUser');
 
 
 Auth::routes();

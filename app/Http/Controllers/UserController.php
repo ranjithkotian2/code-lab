@@ -50,4 +50,14 @@ class UserController extends Controller
 
         return view('profile', ['userRole' => $user[User\Entity::USER_ROLE]]);
     }
+
+    public function promoteToAdmin(string $email)
+    {
+        $this->service->promoteToAdmin($email);
+    }
+
+    public function promoteToSuperUser($email)
+    {
+        $this->service->promoteToSuperUser($email);
+    }
 }

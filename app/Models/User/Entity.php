@@ -33,7 +33,17 @@ class Entity extends Model
         self::USER_ROLE,
     ];
 
-//    protected $defaults = [
-//        self::ROLE      => Role::USER,
-//    ];
+    protected $defaults = [
+        self::USER_ROLE      => Role::USER,
+    ];
+
+    public function getUserRole()
+    {
+        return $this->getAttribute(self::USER_ROLE);
+    }
+
+    public function setUserRole(string $userRole)
+    {
+        $this->setAttribute(self::USER_ROLE, $userRole);
+    }
 }

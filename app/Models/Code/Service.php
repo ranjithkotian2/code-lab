@@ -54,6 +54,10 @@ class Service
         if($res != $conceptNode[ConceptNode\Entity::EXPECTED_OUTPUT]){
             throw new BadRequestHttpException("sorry output didn't match");
         }
+
+        $conceptNodeSubmission->markCompleted();
+
+        $conceptNodeSubmission->saveOrFail();
     }
 
     protected function getOutputAgainstCustomInput(array $input, string $id)

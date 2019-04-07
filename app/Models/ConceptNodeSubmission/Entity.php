@@ -53,4 +53,9 @@ class Entity extends Model
     {
         $this->setAttribute(self::CODE, $code);
     }
+
+    public function markCompleted()
+    {
+        $this->setAttribute(self::COMPLETED, true);
+    }
 }

@@ -30,6 +30,9 @@
             background: gray;
         }
     </style>
+    <div>
+        <h1>Role: {{$userRole}}</h1>
+    </div>
     <button id="logout" onclick="logout()">Logout</button>
     @if($userRole !== 'user')
         <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>

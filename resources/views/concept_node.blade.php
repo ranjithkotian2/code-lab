@@ -72,7 +72,7 @@
         margin: 8px 0;
         box-sizing: border-box;
     }
-    #test_button {
+    #test_button, #submit_button {
         box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
         border: 0;
         border-radius: 5px;
@@ -94,6 +94,10 @@
     }
 
     #test_button:hover{
+        background-color: #1d68a7;
+    }
+
+    #submit_button:hover{
         background-color: #1d68a7;
     }
 
@@ -126,13 +130,12 @@
     </div>
 </div>
 <div class="wrapper ml">
-<div id="editor">
-	
-</div>
+<div id="editor">{{$conceptNodeSubmission['code']}}</div>
 <div class="custom">
-<textarea rows="4" cols="50" placeholder="Custom input" id="custom_input"></textarea>
-<button onclick="testCode()" id="test_button">Test</button>
-<div  style="right: 0; left: 0; background: #b8c2cc"></div>
+    <textarea rows="4" cols="50" placeholder="Custom input" id="custom_input"></textarea>
+    <button onclick="testCode()" id="test_button">Test</button>
+    <button onclick="submitCode()" id="submit_button">Submit</button>
+    <div  style="right: 0; left: 0; background: #b8c2cc"></div>
 </div>
 <div class="custom">
 <textarea readonly id="test_result" rows="4" cols="50" placeholder="custom output" style="visibility: hidden">
@@ -147,7 +150,7 @@
 
     function testCode() {
         var editor = ace.edit("editor");
-        customInput = document.getElementById("custom_input").value;
+        var customInput = document.getElementById("custom_input").value;
         getCodeOutput(editor.getValue(), customInput);
     }
 
@@ -158,7 +161,11 @@
                 setTestResult(JSON.parse(this.responseText));
             }
         };
+<<<<<<< HEAD
         xhttp.open("POST", "http://127.0.0.1:8000/code/test", true);
+=======
+        xhttp.open("POST", "http://54.158.36.225:8000/code/test/{{$data['id']}}", true);
+>>>>>>> master
         xhttp.setRequestHeader("Content-type", "application/json");
 
         var input = {};
@@ -179,6 +186,31 @@
             testResult.style.background = 'white';
         }
         testResult.innerText = res.result;
+    }
+
+    function submitCode() {
+        var editor = ace.edit("editor");
+        var code = editor.getValue();
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                alert(this.responseText);
+                alert("success");
+                // setTestResult(JSON.parse(this.responseText));
+            }
+            else if(this.readyState == 4)
+            {
+                alert('some test cases did not pass!!!')
+            }
+        };
+        xhttp.open("POST", "http://54.158.36.225:8000/code/submit/{{$data['id']}}", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+
+        var input = {};
+        input.code = code;
+        xhttp.send(JSON.stringify(input));
     }
 </script>
 

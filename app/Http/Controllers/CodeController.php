@@ -15,11 +15,20 @@ class CodeController extends Controller
         $this->service = new Code\Service();
     }
 
-    public function test()
+    public function test(string $id)
     {
         $input = Request::all();
 
-        $data = $this->service->test($input);
+        $data = $this->service->test($input, $id);
+
+        return response()->json($data);
+    }
+
+    public function submit(string $id)
+    {
+        $input = Request::all();
+
+        $data = $this->service->submit($input, $id);
 
         return response()->json($data);
     }

@@ -21,6 +21,7 @@ class Entity extends Model
     const TYPE              = 'type';
     const PROVIDED_CODE     = 'provided_code';
     const EXPECTED_OUTPUT   = 'expected_output';
+    const DEFAULT_CODE      = 'default_code';
     const CREATED_AT        = 'created_at';
     const UPDATED_AT        = 'updated_at';
     const DELETED_AT        = 'deleted_at';
@@ -40,6 +41,7 @@ class Entity extends Model
         self::EXPECTED_OUTPUT,
         self::CREATED_AT,
         self::UPDATED_AT,
+        self::DEFAULT_CODE,
     ];
 
     protected $public = [
@@ -55,6 +57,7 @@ class Entity extends Model
         self::EXPECTED_OUTPUT,
         self::CREATED_AT,
         self::UPDATED_AT,
+        self::DEFAULT_CODE,
     ];
 
     protected $fillable = [
@@ -66,6 +69,7 @@ class Entity extends Model
         self::TYPE,
         self::PROVIDED_CODE,
         self::EXPECTED_OUTPUT,
+        self::DEFAULT_CODE,
     ];
 
     protected $defaults = [
@@ -76,6 +80,7 @@ class Entity extends Model
         self::TYPE => null,
         self::PROVIDED_CODE => null,
         self::EXPECTED_OUTPUT => null,
+        self::DEFAULT_CODE => null,
     ];
 
     public function user()

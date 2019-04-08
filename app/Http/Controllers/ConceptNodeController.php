@@ -7,6 +7,7 @@ use Request;
 
 use App\Models\ConceptNode;
 use App\Models\Dependencies;
+use App\Models\ConceptNodeSubmission;
 
 class ConceptNodeController extends Controller
 {
@@ -72,11 +73,18 @@ class ConceptNodeController extends Controller
     public function getConceptNodeView(string $id)
     {
         $payload = ['data' => $this->service->fetchConceptNode($id)];
+
         $dependencies = (new Dependencies\Service())->getAllDependencyNotCompleted($id);
+
         if(empty($dependencies) == false)
         {
             return View::make('dependency_not_covered', ["dep" => $dependencies]);
         }
+
+        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->
+            fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($id);
+
+        $payload['conceptNodeSubmission'] = $conceptNodeSubmission;
 
         return View::make('concept_node', $payload);
     }

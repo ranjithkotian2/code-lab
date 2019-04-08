@@ -2,15 +2,77 @@
 
 namespace App\Models\Code;
 
+use App\Models\ConceptNode;
+use App\Models\ConceptNodeSubmission;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
 class Service
 {
     const TEST_FILE = "test_file1.c";
     const CUSTOM_INPUT = "custom_input.txt";
 
-    public function test(array $input)
+
+
+    public function test(array $input, string $id)
     {
-        $this->createFile($input['code'], self::TEST_FILE);
+        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+
+        (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
+
+        $this->createFile(
+            $conceptNode[ConceptNode\Entity::PROVIDED_CODE] .
+            $input['code'],
+            self::TEST_FILE
+        );
         $out = $this->runFile($input);
+
+        return $out;
+    }
+
+    public function submit(array $input, string $id)
+    {
+        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+
+        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
+
+        $out = $this->getOutputAgainstCustomInput($input, $id);
+
+        $out = $out['result'];
+
+        $res = "";
+
+        for ($i  = 0; $i < count($out); $i++)
+        {
+            $res = $res . $out[$i];
+
+            if ($i < (count($out) - 1))
+            {
+                $res = $res . "\r\n";
+            }
+        }
+
+        if($res != $conceptNode[ConceptNode\Entity::EXPECTED_OUTPUT]){
+            throw new BadRequestHttpException("sorry output didn't match");
+        }
+
+        $conceptNodeSubmission->markCompleted();
+
+        $conceptNodeSubmission->saveOrFail();
+    }
+
+    protected function getOutputAgainstCustomInput(array $input, string $id)
+    {
+        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+
+        $input['customInput'] = $conceptNode[ConceptNode\Entity::TEST_CASES];
+
+        $this->createFile(
+            $conceptNode[ConceptNode\Entity::PROVIDED_CODE] .
+            $input['code'],
+            self::TEST_FILE
+        );
+        $out = $this->runFile($input);
+
         return $out;
     }
 

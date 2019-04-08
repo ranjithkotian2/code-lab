@@ -40,12 +40,22 @@ class Entity extends Model
     ];
 
     protected $defaults = [
-        self::CODE => null,
+        self::CODE => "",
         self::COMPLETED => false,
     ];
 
     public function user()
     {
         return $this->belongsTo(User\Entity::class);
+    }
+
+    public function setCode(string $code)
+    {
+        $this->setAttribute(self::CODE, $code);
+    }
+
+    public function markCompleted()
+    {
+        $this->setAttribute(self::COMPLETED, true);
     }
 }

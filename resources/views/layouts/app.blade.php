@@ -4,7 +4,7 @@
     }
     if(!isset($_SESSION['auth']) || $_SESSION['auth'] !== true)
     {
-        header('Location: http://54.158.36.225:8000/login');
+        header('Location: http://127.0.0.1:8000/login');
         exit();
     }
 @endphp
@@ -75,11 +75,12 @@
             height: 5px;
             background: mintcream;
             width: 1000px;
+            height: 40px;
             padding-top: 25px;
         }
 
         li a, li button:hover:not(.active) {
-            background-color: #111;
+            background-color: #333;
         }
 
         button{
@@ -136,7 +137,7 @@
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 20px 20px;
             text-decoration: none;
         }
 
@@ -163,52 +164,71 @@
         }
         #nodes{
             display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            /* align-items: center; */
+            flex-direction: row;
+            /*justify-content: center;
+            align-items: center; */
             flex-basis: 50%;
             width: 50%;
             margin: 0 auto;
-        }
-         .link_name{
-             font-weight: bold;
-         }
-        .links{
-            background: rgba(25,118,210,0.2);
-            margin-bottom: 10px;
-            border-radius: 5px;
-            padding: 10px 10px;
+
 
         }
+        .link_name{
+            font-weight: bold;
+            font-family: 'Lucida Sans';
+            text-align: center;
+        }
+
+        .links{
+            border-radius: 50%;
+            padding: 60px 60px;
+            width: 200px;
+            height: 80px;
+            text-align:center;
+            margin: 50px;
+            /*padding-top: 10%;*/
+            background:rgba(238, 192, 238, 0.959);
+        }
+
         .link_a{
-            text-decoration: none;
+            text-decoration:thistle;
         }
 
         .link_name {
-            font-weight: bold;
-            margin: 0;
-            color: rgba(0,0,0,0.7);
+            font-weight:bold;
+            font-size:20px;
+            margin:0;
+            color: rgba(0, 0, 0, 0.938);
         }
         .bt {
-            padding-top: 2px;
+            padding-top: 10px;
+            text-align: center;
         }
+
         #bt{
             border-radius: 7px;
-            width: 69px;
+
+            width: 89px;
             height: 41px;
         }
         #content{
             padding: 40px;
         }
+        h1{
+            text-align:center;
+            text-decoration-color:ghostwhite;
+        }
+
     </style>
 </head>
-<body style="background: #F8F8F8">
+{{-- <body style="background: #F8F8F8"> --}}
+<body style="background-image: url('images/home_bg.jpg')">
 <div>
     <ul>
-        <li><a href="http://54.158.36.225:8000/">Home</a></li>
+        <li><a href="http://127.0.0.1:8000/">Home</a></li>
         <li><input type="text" id="search_bar" onsubmit="fetchConceptNodes()"></li>
         <li class="bt"><button onclick="fetchConceptNodes()" id="bt">Search</button></li>
-        <li id="right"><a href="http://54.158.36.225:8000/profile">Profile</a></li>
+        <li id="right"><a href="http://127.0.0.1:8000/profile">Profile</a></li>
     </ul>
 </div>
 <div id="content">
@@ -248,7 +268,7 @@
                 }
             }
         };
-        xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/search/" + keyword, true);
+        xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/search/" + keyword, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }
@@ -265,7 +285,7 @@
         var parent = document.getElementById("nodes");
         var newNode = document.createElement('div');
         newNode.classList.add("links");
-        newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
+        newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
             conceptNode['name']
             +"</h1></a>";
         parent.appendChild(newNode);

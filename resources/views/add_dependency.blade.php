@@ -257,7 +257,7 @@
                 }
             }
         };
-        xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/search/" + keyword, true);
+        xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/search/" + keyword, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }
@@ -274,7 +274,7 @@
         var parent = document.getElementById("nodes");
         var newNode = document.createElement('div');
         newNode.classList.add("links");
-        newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
+        newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
             conceptNode['name']
             +"</h1></a>" +
             "<button class = 'update_bt' id = 'bt" + conceptNode['id'] + "' value='"+ conceptNode['id'] +"' onclick='addDependency(" + conceptNode['id'] + ")'>Add</button>";
@@ -291,7 +291,7 @@
                 bt.style.background = "blue";
             }
         };
-        xhttp.open("POST", "http://54.158.36.225:8000/dependencies/get_add_dependency_view/"+ id +"/" + dependencyId, true);
+        xhttp.open("POST", "http://127.0.0.1:8000/dependencies/get_add_dependency_view/"+ id +"/" + dependencyId, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }

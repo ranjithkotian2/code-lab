@@ -1,43 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-    hey
+
     <style>
         #new_concept{
-            width: 187px;
-            height: 50px;
-            background: ghostwhite;
+            width: 197px;
+            height: 60px;
+            background: darkslategray;
             border-radius: 26px;
+            display: inline-block;
+            padding: 18px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            /*background-color: #4CAF50;*/
+            border: none;
+            /*border-radius: 15px;*/
+            box-shadow: 0 9px #999;
+            margin:30px;
         }
         #logout{
             background: red;
             width: 109px;
             height: 50px;
             border-radius: 23px;
+            display: inline-block;
+            padding: 18px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            /*background-color: #4CAF50;*/
+            border: none;
+            /*border-radius: 15px;*/
+            box-shadow: 0 9px #999;
+            margin:30px;
         }
         #logout:hover{
             background: darkred;
         }
         #new_concept:hover{
-            background: gray;
+            background: dimgray;
+           /* background-color: #3e8e41*/
+        }
+        #new_concept:active {
+            background-color: darkslategray;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
         }
         #added_concept_nodes, #add_super_user, #add_admin{
-            background: ghostwhite;
-            width: 164px;
-            border-radius: 28px;
-            height: 52px;
+            background: darkslategray;
+            width: 197px;
+            height: 60px;
+            border-radius: 26px;
+            display: inline-block;
+            padding: 18px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            /*background-color: #4CAF50;*/
+            border: none;
+            /*border-radius: 15px;*/
+            box-shadow: 0 9px #999;
+            margin:30px;
+
         }
-        #added_concept_nodes, #add_super_user, #add_admin :hover{
-            background: gray;
+        #added_concept_nodes:hover, #add_super_user:hover, #add_admin:hover{
+            background: dimgray;
+        }
+        #added_concept_nodes:active, #add_super_user:active, #add_admin:active {
+            background-color: darkslategray;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        h1 {
+            text-align:center;
+        }
+        .role{
+            color:whitesmoke;
         }
     </style>
-    <div>
-        <h1>Role: {{$userRole}}</h1>
+    <body style="background-image: url('images/bg-01.jpg')">
+    <div class="role">
+        <h1>Welcome {{$userRole}}!</h1>
     </div>
     <button id="logout" onclick="logout()">Logout</button>
     @if($userRole !== 'user')
         <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
-        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
+        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added</button>
     @endif
 
     @if($userRole === 'admin')
@@ -54,29 +112,30 @@
                     routeToHome();
                 }
             };
-            xhttp.open("POST", "http://54.158.36.225:8000/user/logout", true);
+            xhttp.open("POST", "http://127.0.0.1:8000/user/logout", true);
 
             xhttp.send();
         }
 
         function loadCreateNewNode() {
-            document.location.href = "http://54.158.36.225:8000/concept_nodes/create_view";
+            document.location.href = "http://127.0.0.1:8000/concept_nodes/create_view";
         }
 
         function routeToHome() {
-            document.location.href = "http://54.158.36.225:8000/";
+            document.location.href = "http://127.0.0.1:8000/";
         }
 
         function loadAddedConceptNode() {
-            document.location.href = "http://54.158.36.225:8000/concept_nodes/user/added_view";
+            document.location.href = "http://127.0.0.1:8000/concept_nodes/user/added_view";
         }
 
         function getAddSuperUserPage() {
-            document.location.href = "http://54.158.36.225:8000/add_super_user";
+            document.location.href = "http://127.0.0.1:8000/add_super_user";
         }
 
         function getAddAdminPage() {
-            document.location.href = "http://54.158.36.225:8000/add_admin";
+            document.location.href = "http://127.0.0.1:8000/add_admin";
         }
     </script>
+    </body>
 @endsection

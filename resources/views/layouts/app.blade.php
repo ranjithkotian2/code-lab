@@ -9,7 +9,7 @@
     }
 @endphp
 <!DOCTYPE html>
-<html>
+<div>
 <head>
     <title>codelab</title>
     <style type="text/css" media="screen">
@@ -164,7 +164,7 @@
         }
         #nodes{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             /*justify-content: center;
             align-items: center; */
             flex-basis: 50%;
@@ -179,25 +179,50 @@
             text-align: center;
         }
 
-        .links{
-            border-radius: 50%;
-            padding: 60px 60px;
+        .links {
+            border-radius: 26px;
+            padding: 40px 40px;
             width: 200px;
-            height: 80px;
-            text-align:center;
-            margin: 50px;
+            height: 30px;
+            text-align: center;
+            margin: 20px;
             /*padding-top: 10%;*/
-            background:rgba(238, 192, 238, 0.959);
+            /*background:rgba(238, 192, 238, 0.959);*/
+            background: lightseagreen;
+            display: inline-block;
+            padding: 18px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            /*background-color: #4CAF50;*/
+            border: none;
+            /*border-radius: 15px;*/
+            box-shadow: 0 9px #999;
         }
 
+        .links:hover{
+            background: lightcyan;
+            /* background-color: #3e8e41*/
+        }
+        .links:active {
+            background-color: lightseagreen;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
         .link_a{
             text-decoration:thistle;
+            padding-bottom: 20px;
+            padding-top: 10px;
         }
 
         .link_name {
             font-weight:bold;
-            font-size:20px;
+            font-size:18px;
             margin:0;
+            padding-bottom: 2px;
             color: rgba(0, 0, 0, 0.938);
         }
         .bt {
@@ -218,11 +243,20 @@
             text-align:center;
             text-decoration-color:ghostwhite;
         }
+        body{
+            height: 100%;
+            /*background-position: center;*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.9;
+            color:rgba(29,39,54,.16);
+        }
 
     </style>
 </head>
-{{-- <body style="background: #F8F8F8"> --}}
-<body style="background-image: url('images/home_bg.jpg')">
+    {{--<body style="background:rgba(29,39,54,.16)">--}}
+    <body style="background-image: url('images/home_bg5.jpg')">
+
 <div>
     <ul>
         <li><a href="http://127.0.0.1:8000/">Home</a></li>

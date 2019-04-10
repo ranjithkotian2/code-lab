@@ -1,4 +1,6 @@
 @include('layouts.session_auth')
+<html>
+
 
 <style type="text/css" media="screen">
     #editor {
@@ -162,7 +164,7 @@
         font-weight: bold;
     }
     .links{
-        background: rgba(25,118,210,0.2);
+        background: rgba(25,118,210,0.6);
         margin-bottom: 10px;
         border-radius: 5px;
         padding: 10px 10px;
@@ -175,7 +177,8 @@
     .link_name {
         font-weight: bold;
         margin: 0;
-        color: rgba(0,0,0,0.7);
+       /* color: rgba(0,0,0,0.9);*/
+        color: ghostwhite;
     }
     .bt {
         padding-top: 2px;
@@ -189,16 +192,19 @@
         padding: 40px;
     }
 
-    #search_bt, .update_bt{
+    #search_bt{
         box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
         border: 0;
-        border-radius: 5px;
+        border-radius: 7px;
         text-align: center;
-        width: 150px;
+        /*width: 150px;
+         margin-bottom: 0;*/
+        width: 109px;
+        height: 61px;
         color: #fff;
-        background-color: #5bc0de;
+        background-color: gray;
         display: inline-block;
-        margin-bottom: 0;
+        margin-left: 10px;
         font-weight: normal;
         vertical-align: middle;
         touch-action: manipulation;
@@ -209,14 +215,53 @@
         box-sizing: border-box;
         align-items: flex-start;
     }
-    #search_bt:hover, #update_bt:hover{
-        background-color: #1d68a7;
+    .update_bt{
+        box-shadow: 0 1.5px 4px rgba(0,0,0,0.34), 0 1.5px 6px rgba(0,0,0,0.32);
+        border: 0;
+        border-radius: 15px;
+        text-align: center;
+        width: 150px;
+        /*color: #fff;*/
+        color:black;
+        /* background-color: #5bc0de; */
+        background-color: darkseagreen;
+        display: inline-block;
+        margin:10px;
+        font-weight: normal;
+        vertical-align: middle;
+        touch-action: cross-slide-x;
+        background-image: none;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        box-sizing: border-box;
+        align-items: flex-start;
+    }
+    #search_bt:hover, .update_bt:hover{
+        /*background-color: #1d68a7;*/
+        background-color: lightgreen;
     }
     #search_bt{
         padding: 21px;
     }
-</style>
+    body{
+        height: 100%;
+        /*background-position: center;*/
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.9;
+    }
+    h1{
+        color:white;
+        margin:52px;
+        font-family: "Roboto";
 
+    }
+
+</style>
+{{--<body style="background:rgba(29,39,54,.16)">--}}
+<body style="background-image: url('http://127.0.0.1:8000/images/home_bg5.jpg')">
+{{--<body style="background-image: url('images/home_bg5.jpg')">--}}
 <h1>{{$conceptNode['name']}}</h1>
 
 <input type="text" name="" id="search_bar">
@@ -296,3 +341,5 @@
         xhttp.send();
     }
 </script>
+</body>
+</html>

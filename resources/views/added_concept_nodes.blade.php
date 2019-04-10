@@ -1,6 +1,6 @@
 <html>
 <head>
-
+    <title>codelab</title>
 <style type="text/css" media="screen">
     #editor {
         width: 615px;
@@ -163,11 +163,10 @@
         font-weight: bold;
     }
     .links{
-        background: rgba(25,118,210,0.2);
+        background: rgba(25,118,210,0.4);
         margin-bottom: 10px;
         border-radius: 5px;
         padding: 10px 10px;
-
     }
     .link_a{
         text-decoration: none;
@@ -176,7 +175,7 @@
     .link_name {
         font-weight: bold;
         margin: 0;
-        color: rgba(0,0,0,0.7);
+        color: rgba(0,0,0,0.9);
     }
     .bt {
         padding-top: 2px;
@@ -187,37 +186,50 @@
         height: 41px;
     }
     #content{
-        padding: 40px;
+        padding: 60px;
     }
     #edit_bt, #update_bt{
-        box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
+        box-shadow: 0 1.5px 4px rgba(0,0,0,0.34), 0 1.5px 6px rgba(0,0,0,0.32);
         border: 0;
-        border-radius: 5px;
+        border-radius: 15px;
         text-align: center;
         width: 150px;
         color: #fff;
-        background-color: #5bc0de;
+       /* background-color: #5bc0de; */
+        background-color: blueviolet;
         display: inline-block;
         margin:10px;
         font-weight: normal;
         vertical-align: middle;
-        touch-action: manipulation;
+        touch-action: cross-slide-x;
         background-image: none;
         padding: 6px 12px;
         font-size: 14px;
         line-height: 1.42857143;
         box-sizing: border-box;
         align-items: flex-start;
+
     }
     #edit_bt:hover, #update_bt:hover{
         background-color: #1d68a7;
+       /* background-color: darkslateblue; */
+
+    }
+    body{
+        height: 100%;
+        /*background-position: center;*/
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.9;
     }
 </style>
 </head>
-<body style="background-image: url('images/home_bg2.jpg')">
+<body style="background-image: url('http://127.0.0.1:8000/images/home_bg9.jpg')">
+{{-- <body style="background:rgba(29,39,54,.16)"> --}}
     <div id="content">
 
     </div>
+
     <script>
         fetchResults();
         function fetchResults() {

@@ -28,12 +28,43 @@
     <link rel="stylesheet" type="text/css" href="boot_css/util.css">
     <link rel="stylesheet" type="text/css" href="boot_css/main.css">
     <!--===============================================================================================-->
+    <style>
+        .login100-more {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover ;
+            width: calc(100% - 520px);
+            position: relative;
+            z-index: 1;
+        }
+        .login100-more::before {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: -1;
+            width:  20%;
+            height: 20%;
+            top: 0;
+            left: 0;
+            /*background: #e8519e;
+            background: -webkit-linear-gradient(bottom, #e8519e, #c77ff2);
+            background: -o-linear-gradient(bottom, #e8519e, #c77ff2);
+            background: -moz-linear-gradient(bottom, #e8519e, #c77ff2);
+            background: linear-gradient(bottom, #e8519e, #c77ff2);*/
+            background: cornflowerblue;
+            background: -webkit-linear-gradient(bottom, cornflowerblue, lightslategray);
+            background: -o-linear-gradient(bottom, cornflowerblue, lightslategray);
+            background: -moz-linear-gradient(bottom, cornflowerblue, lightslategray);
+            background: linear-gradient(bottom, cornflowerblue, lightslategray);
+            opacity: 0;
+        }
+    </style>
 </head>
 <body style="background-color: #999999;">
 
 <div class="limiter">
     <div class="container-login100">
-        <div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
+        <div class="login100-more" style="background-image: url('images/super_user3.jpg');"></div>
 
         <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
             <form class="login100-form validate-form">

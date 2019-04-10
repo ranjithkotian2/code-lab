@@ -6,7 +6,7 @@
         #new_concept{
             width: 197px;
             height: 60px;
-            background: darkslategray;
+            background: darkolivegreen;
             border-radius: 26px;
             display: inline-block;
             padding: 18px 28px;
@@ -45,16 +45,16 @@
             background: darkred;
         }
         #new_concept:hover{
-            background: dimgray;
+            background: yellowgreen;
            /* background-color: #3e8e41*/
         }
         #new_concept:active {
-            background-color: darkslategray;
+            background-color: darkolivegreen;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }
         #added_concept_nodes, #add_super_user, #add_admin{
-            background: darkslategray;
+            background: deepskyblue;
             width: 197px;
             height: 60px;
             border-radius: 26px;
@@ -74,15 +74,17 @@
 
         }
         #added_concept_nodes:hover, #add_super_user:hover, #add_admin:hover{
-            background: dimgray;
+            background: cornflowerblue;
         }
         #added_concept_nodes:active, #add_super_user:active, #add_admin:active {
-            background-color: darkslategray;
+            background-color: deepskyblue;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }
         h1 {
             text-align:center;
+            color: black;
+
         }
         .role{
             color:whitesmoke;
@@ -95,7 +97,7 @@
     <button id="logout" onclick="logout()">Logout</button>
     @if($userRole !== 'user')
         <button id="new_concept" onclick="loadCreateNewNode()">Create New Concept Node</button>
-        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added</button>
+        <button id="added_concept_nodes" onclick="loadAddedConceptNode()">Concept Nodes Added By You</button>
     @endif
 
     @if($userRole === 'admin')

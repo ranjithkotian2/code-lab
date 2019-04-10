@@ -1,6 +1,6 @@
 @include('layouts.session_auth')
-
-
+<html>
+<head>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
         * {
@@ -21,8 +21,14 @@
             font-weight: 100;
             font-size: 12px;
             line-height: 30px;
-            color: #777;
-            background: #4CAF50;
+            height: 100%;
+            /*background-position: center;*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.9;
+            /*background-image: url('images/home_bg5.jpg');*/
+            /*color: #777;*/
+            /*background: #4CAF50;*/
         }
 
         .container {
@@ -147,7 +153,8 @@
             color: #888;
         }
     </style>
-
+</head>
+<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
     <div class="container">
         <form id="contact" action="http://127.0.0.1:8000/concept_nodes/create_from_view" method="post">
             <h3>Create Concept Node</h3>
@@ -181,3 +188,6 @@
             </fieldset>
         </form>
     </div>
+
+</body>
+</html>

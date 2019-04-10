@@ -9,7 +9,7 @@
     }
 @endphp
 <!DOCTYPE html>
-<html>
+<div>
 <head>
     <title>codelab</title>
     <style type="text/css" media="screen">
@@ -75,11 +75,12 @@
             height: 5px;
             background: mintcream;
             width: 1000px;
+            height: 40px;
             padding-top: 25px;
         }
 
         li a, li button:hover:not(.active) {
-            background-color: #111;
+            background-color: #333;
         }
 
         button{
@@ -136,7 +137,7 @@
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 20px 20px;
             text-decoration: none;
         }
 
@@ -164,45 +165,98 @@
         #nodes{
             display: flex;
             flex-direction: column;
-            /* justify-content: center; */
-            /* align-items: center; */
+            /*justify-content: center;
+            align-items: center; */
             flex-basis: 50%;
             width: 50%;
             margin: 0 auto;
-        }
-         .link_name{
-             font-weight: bold;
-         }
-        .links{
-            background: rgba(25,118,210,0.2);
-            margin-bottom: 10px;
-            border-radius: 5px;
-            padding: 10px 10px;
+
 
         }
-        .link_a{
+        .link_name{
+            font-weight: bold;
+            font-family: 'Lucida Sans';
+            text-align: center;
+        }
+
+        .links {
+            border-radius: 26px;
+            padding: 40px 40px;
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            margin: 20px;
+            /*padding-top: 10%;*/
+            /*background:rgba(238, 192, 238, 0.959);*/
+            background: lightseagreen;
+            display: inline-block;
+            padding: 18px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
             text-decoration: none;
+            outline: none;
+            color: #fff;
+            /*background-color: #4CAF50;*/
+            border: none;
+            /*border-radius: 15px;*/
+            box-shadow: 0 9px #999;
+        }
+
+        .links:hover{
+            background: lightcyan;
+            /* background-color: #3e8e41*/
+        }
+        .links:active {
+            background-color: lightseagreen;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        .link_a{
+            text-decoration:thistle;
+            padding-bottom: 20px;
+            padding-top: 10px;
         }
 
         .link_name {
-            font-weight: bold;
-            margin: 0;
-            color: rgba(0,0,0,0.7);
+            font-weight:bold;
+            font-size:18px;
+            margin:0;
+            padding-bottom: 2px;
+            color: rgba(0, 0, 0, 0.938);
         }
         .bt {
-            padding-top: 2px;
+            padding-top: 10px;
+            text-align: center;
         }
+
         #bt{
             border-radius: 7px;
-            width: 69px;
+
+            width: 89px;
             height: 41px;
         }
         #content{
             padding: 40px;
         }
+        h1{
+            text-align:center;
+            text-decoration-color:ghostwhite;
+        }
+        body{
+            height: 100%;
+            /*background-position: center;*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.9;
+            color:rgba(29,39,54,.16);
+        }
+
     </style>
 </head>
-<body style="background: #F8F8F8">
+    {{--<body style="background:rgba(29,39,54,.16)">--}}
+    <body style="background-image: url('images/home_bg5.jpg')">
+
 <div>
     <ul>
         <li><a href="http://54.158.36.225:8000/">Home</a></li>

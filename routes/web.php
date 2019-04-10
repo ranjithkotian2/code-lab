@@ -28,6 +28,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/login_sign_up', function () {
+    return view('login_sign_up');
+});
+
 
 Route::get('/editor', function () {
     return view('editor');

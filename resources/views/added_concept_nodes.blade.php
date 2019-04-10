@@ -224,7 +224,7 @@
     }
 </style>
 </head>
-<body style="background-image: url('http://127.0.0.1:8000/images/home_bg9.jpg')">
+<body style="background-image: url('http://54.158.36.225:8000/images/home_bg9.jpg')">
 {{-- <body style="background:rgba(29,39,54,.16)"> --}}
     <div id="content">
 
@@ -244,7 +244,7 @@
                     }
                 }
             };
-            xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/search/user", true);
+            xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/search/user", true);
             // xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
         }
@@ -261,7 +261,7 @@
             var parent = document.getElementById("nodes");
             var newNode = document.createElement('div');
             newNode.classList.add("links");
-            newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
+            newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
                 conceptNode['name']
                 + "</h1></a><button id = 'edit_bt' value='"+ conceptNode['id'] +"' onclick='loadEditPage(" + conceptNode['id'] + ")'>Edit</button>"
                 +"<button id = 'update_bt' value='"+ conceptNode['id'] +"' onclick='loadAddDependencyPage(" + conceptNode['id'] + ")'>Add Dependency</button>";
@@ -269,11 +269,11 @@
         }
 
         function loadEditPage(id) {
-            document.location.href = "http://127.0.0.1:8000/concept_nodes/edit_concept_node_view/" + id;
+            document.location.href = "http://54.158.36.225:8000/concept_nodes/edit_concept_node_view/" + id;
         }
 
         function loadAddDependencyPage(id) {
-            document.location.href = "http://127.0.0.1:8000/dependencies/get_add_dependency_view/" + id;
+            document.location.href = "http://54.158.36.225:8000/dependencies/get_add_dependency_view/" + id;
         }
     </script>
 </body>

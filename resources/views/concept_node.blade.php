@@ -142,7 +142,7 @@
 </textarea>
 </div>
 </div>
-<script src="http://127.0.0.1:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://54.158.36.225:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
@@ -161,11 +161,7 @@
                 setTestResult(JSON.parse(this.responseText));
             }
         };
-<<<<<<< HEAD
-        xhttp.open("POST", "http://127.0.0.1:8000/code/test", true);
-=======
         xhttp.open("POST", "http://54.158.36.225:8000/code/test/{{$data['id']}}", true);
->>>>>>> master
         xhttp.setRequestHeader("Content-type", "application/json");
 
         var input = {};

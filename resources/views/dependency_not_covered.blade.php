@@ -213,7 +213,7 @@
                 addConceptNode(res);
             }
         };
-        xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/" + id, true);
+        xhttp.open("GET", "http://127.0.0.1:8000/concept_nodes/" + id, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }
@@ -222,7 +222,7 @@
         var parent = document.getElementById("nodes");
         var newNode = document.createElement('div');
         newNode.classList.add("links");
-        newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
+        newNode.innerHTML = "<a href='http://127.0.0.1:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
             conceptNode['name']
             +"</h1></a>";
         parent.appendChild(newNode);

@@ -118,31 +118,28 @@
         <div class="wrapper">
         <iframe width="560" height="315" src="{{$data['video_url']}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-        <textarea readonly cols = 100 rows="50">
-            {{$data['provided_code']}}
-        </textarea>
         <h2>
-            <textarea readonly cols = 100 rows="25">
                 {{$data['problem_statement']}}
-            </textarea>
         </h2>
         </div>
     </div>
 </div>
-<div class="wrapper ml">
-<div id="editor">{{$conceptNodeSubmission['code']}}</div>
-<div class="custom">
-    <textarea rows="4" cols="50" placeholder="Custom input" id="custom_input"></textarea>
-    <button onclick="testCode()" id="test_button">Test</button>
-    <button onclick="submitCode()" id="submit_button">Submit</button>
-    <div  style="right: 0; left: 0; background: #b8c2cc"></div>
+
+<h2>Tasks:</h2>
+
+    <div id="nodes">
+        @php
+            foreach ($tasks as $task)
+            {
+                echo "<div class='links'><a class='link_a' href='http://127.0.0.1:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
+                        {$task['problem_statement']}
+                        </h1></a></div>";
+            }
+        @endphp
+    </div>
+
 </div>
-<div class="custom">
-<textarea readonly id="test_result" rows="4" cols="50" placeholder="custom output" style="visibility: hidden">
-</textarea>
-</div>
-</div>
-<script src="http://54.158.36.225:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://127.0.0.1:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
@@ -161,7 +158,7 @@
                 setTestResult(JSON.parse(this.responseText));
             }
         };
-        xhttp.open("POST", "http://54.158.36.225:8000/code/test/{{$data['id']}}", true);
+        xhttp.open("POST", "http://127.0.0.1:8000/code/test/{{$data['id']}}", true);
         xhttp.setRequestHeader("Content-type", "application/json");
 
         var input = {};
@@ -201,7 +198,7 @@
                 alert('some test cases did not pass!!!')
             }
         };
-        xhttp.open("POST", "http://54.158.36.225:8000/code/submit/{{$data['id']}}", true);
+        xhttp.open("POST", "http://127.0.0.1:8000/code/submit/{{$data['id']}}", true);
         xhttp.setRequestHeader("Content-type", "application/json");
 
         var input = {};

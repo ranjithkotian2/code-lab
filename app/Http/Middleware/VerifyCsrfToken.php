@@ -26,5 +26,8 @@ class VerifyCsrfToken extends Middleware
         'user/',
         'login',
         'dependencies/*',
+        'task',
+        'tasks',
+        'tasks/*',
     ];
 }

@@ -83,5 +83,17 @@ Route::post('user/promote_to_admin/{email}', 'UserController@promoteToAdmin');
 Route::post('user/promote_to_super_user/{email}', 'UserController@promoteToSuperUser');
 
 
+
+// tasks
+Route::post('tasks', 'TaskController@create');
+Route::get('tasks', 'TaskController@fetchAll');
+Route::get('task/concept_node/{concept_node_id}', 'TaskController@getTasksForConceptNode');
+Route::get('tasks/{id}', 'TaskController@fetch');
+Route::get('tasks/get_add_task_view/{conceptNodeId}', 'TaskController@getAddTaskView');
+Route::post('tasks/tasks/create_from_view/{conceptNodeId}', 'TaskController@createFromView');
+Route::get('tasks/{id}/get_view', 'TaskController@fetchView');
+
+
+
 Auth::routes();
 

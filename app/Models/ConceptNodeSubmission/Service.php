@@ -2,6 +2,7 @@
 
 namespace App\Models\ConceptNodeSubmission;
 
+use App\Models\Task;
 use App\Models\User;
 use App\Models\ConceptNode;
 
@@ -41,6 +42,35 @@ class Service
         $input[Entity::COMPLETED] = false;
 
         $conceptNode = (new ConceptNode\Service())->fetchConceptNode($conceptNodeId);
+        $input[Entity::CODE] = $conceptNode[ConceptNode\Entity::DEFAULT_CODE];
+        if($conceptNode[ConceptNode\Entity::DEFAULT_CODE] === null)
+        {
+            $input[Entity::CODE] = "// write your code here";
+        }
+
+        return $this->create($input);
+    }
+
+    public function fetchOrCreateConceptNodeSubmissionByUserIdAndTaskId(string $conceptNodeId)
+    {
+        $conceptNodeSubmissions = $this->entityRepo->fetchAll();
+
+        $userId = $this->getUserIdFromSession();
+
+        foreach ($conceptNodeSubmissions as $sub)
+        {
+            if (($sub[Entity::USER_ID] == $userId) and
+                ($sub[Entity::CONCEPT_NODE_ID] == $conceptNodeId))
+            {
+                return $sub;
+            }
+        }
+
+        $input = [];
+        $input[Entity::CONCEPT_NODE_ID] = $conceptNodeId;
+        $input[Entity::COMPLETED] = false;
+
+        $conceptNode = (new Task\Service())->fetch($conceptNodeId);
         $input[Entity::CODE] = $conceptNode[ConceptNode\Entity::DEFAULT_CODE];
         if($conceptNode[ConceptNode\Entity::DEFAULT_CODE] === null)
         {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use View;
 use Request;
 
+use App\Models\Task;
 use App\Models\ConceptNode;
 use App\Models\Dependencies;
 use App\Models\ConceptNodeSubmission;
@@ -44,7 +45,8 @@ class ConceptNodeController extends Controller
     public function createFromView()
     {
         $this->create();
-        return view::make('profile', []);
+
+        return (new UserController())->getProfileView();
     }
 
     public function getSearchPage()
@@ -85,6 +87,8 @@ class ConceptNodeController extends Controller
             fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($id);
 
         $payload['conceptNodeSubmission'] = $conceptNodeSubmission;
+
+        $payload['tasks'] = (new Task\Service())->fetchForConceptNode($id);
 
         return View::make('concept_node', $payload);
     }

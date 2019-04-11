@@ -227,6 +227,7 @@
         .bt {
             padding-top: 10px;
             text-align: center;
+            margin-left:9px;
         }
 
         #bt{

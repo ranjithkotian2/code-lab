@@ -6,7 +6,7 @@
         #new_concept{
             width: 197px;
             height: 60px;
-            background: darkolivegreen;
+            background: deepskyblue;
             border-radius: 26px;
             display: inline-block;
             padding: 18px 28px;
@@ -45,11 +45,11 @@
             background: darkred;
         }
         #new_concept:hover{
-            background: yellowgreen;
+            background: cornflowerblue;
            /* background-color: #3e8e41*/
         }
         #new_concept:active {
-            background-color: darkolivegreen;
+            background-color: deepskyblue;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }

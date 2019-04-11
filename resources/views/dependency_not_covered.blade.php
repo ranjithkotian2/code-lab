@@ -187,9 +187,9 @@
         padding: 40px;
     }
 </style>
-
-<h1>all the dependencies are not covered</h1>
-<h2>please cover:</h2>
+<body>
+<h1>All dependencies are not covered</h1>
+<h2>Please cover:</h2>
 
 @php
 @endphp
@@ -228,3 +228,4 @@
         parent.appendChild(newNode);
     }
 </script>
+</body>

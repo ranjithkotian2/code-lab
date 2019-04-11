@@ -164,6 +164,19 @@
                 <input placeholder="youtube embed url" name="video_url" type="url" tabindex="4">
             </fieldset>
             <fieldset>
+                <textarea placeholder="Test Cases" name="test_cases" tabindex="5"></textarea>
+            </fieldset>
+            <fieldset>
+                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6"> <br>
+                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7">
+            </fieldset>
+            <fieldset>
+                <textarea placeholder="provided code" name="provided_code" tabindex="8"></textarea>
+            </fieldset>
+            <fieldset>
+                <textarea name="expected_output" placeholder="expected output"></textarea>
+            </fieldset>
+            <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
             </fieldset>
         </form>

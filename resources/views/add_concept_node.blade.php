@@ -21,7 +21,8 @@
             font-weight: 100;
             font-size: 12px;
             line-height: 30px;
-            height: 100%;
+
+            /*height: 100%;*/
             /*background-position: center;*/
             background-repeat: no-repeat;
             background-size: cover;
@@ -34,6 +35,7 @@
         .container {
             max-width: 400px;
             width: 100%;
+            height: 100%;
             margin: 0 auto;
             position: relative;
         }
@@ -109,7 +111,8 @@
             cursor: pointer;
             width: 100%;
             border: none;
-            background: #4CAF50;
+            /*background: #4CAF50;*/
+            background: #1f6fb2;
             color: #FFF;
             margin: 0 0 5px;
             padding: 10px;
@@ -154,7 +157,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
+<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
     <div class="container">
         <form id="contact" action="http://54.158.36.225:8000/concept_nodes/create_from_view" method="post">
             <h3>Create Concept Node</h3>
@@ -170,19 +173,19 @@
             <fieldset>
                 <input placeholder="youtube embed url" name="video_url" type="url" tabindex="4">
             </fieldset>
-            <fieldset>
-                <textarea placeholder="Test Cases" name="test_cases" tabindex="5"></textarea>
-            </fieldset>
-            <fieldset>
-                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6"> <br>
-                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7">
-            </fieldset>
-            <fieldset>
-                <textarea placeholder="provided code" name="provided_code" tabindex="8"></textarea>
-            </fieldset>
-            <fieldset>
-                <textarea name="expected_output" placeholder="expected output"></textarea>
-            </fieldset>
+{{--            <fieldset>--}}
+{{--                <textarea placeholder="Test Cases" name="test_cases" tabindex="5"></textarea>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6"> <br>--}}
+{{--                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7">--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                <textarea placeholder="provided code" name="provided_code" tabindex="8"></textarea>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                <textarea name="expected_output" placeholder="expected output"></textarea>--}}
+{{--            </fieldset>--}}
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
             </fieldset>

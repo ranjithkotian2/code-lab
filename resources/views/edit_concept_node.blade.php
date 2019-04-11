@@ -22,8 +22,11 @@
             font-weight: 100;
             font-size: 12px;
             line-height: 30px;
-            color: #777;
-            background: #4CAF50;
+            /*color: #777;*/
+            /*background: #4CAF50;*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.9;
         }
 
         .container {
@@ -104,7 +107,8 @@
             cursor: pointer;
             width: 100%;
             border: none;
-            background: #4CAF50;
+            /*background: #4CAF50;*/
+            background: #1f6fb2;
             color: #FFF;
             margin: 0 0 5px;
             padding: 10px;
@@ -149,7 +153,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
+<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
     <div class="container">
         <form id="contact" action="http://54.158.36.225:8000/concept_nodes/edit_from_view/{{$data['id']}}" method="post">
             <h3>Edit Concept Node</h3>
@@ -166,22 +170,22 @@
             <fieldset>
                 <input placeholder="youtube embed url" name="video_url" type="url" tabindex="4" value="{{$data['video_url']}}">
             </fieldset>
-            <fieldset>
-                <textarea placeholder="Test Cases" name="test_cases" tabindex="5">{{$data['test_cases']}}</textarea>
-            </fieldset>
-            <fieldset>
-                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6" checked = {{$data['type'] == 'concept_node'}}> <br>
-                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7" checked = {{$data['type'] == 'problem_node'}}>
-            </fieldset>
-            <fieldset>
-                <textarea placeholder="provided code" name="provided_code" tabindex="8">{{$data['provided_code']}}</textarea>
-            </fieldset>
-            <fieldset>
-                <textarea name="expected_output" placeholder="expected output">{{$data['expected_output']}}</textarea>
-            </fieldset>
-            <fieldset>
-                <textarea name="default_code" placeholder="default code">{{$data['default_code']}}</textarea>
-            </fieldset>
+{{--            <fieldset>--}}
+{{--                <textarea placeholder="Test Cases" name="test_cases" tabindex="5">{{$data['test_cases']}}</textarea>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6" checked = {{$data['type'] == 'concept_node'}}> <br>--}}
+{{--                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7" checked = {{$data['type'] == 'problem_node'}}>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                <textarea placeholder="provided code" name="provided_code" tabindex="8">{{$data['provided_code']}}</textarea>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                <textarea name="expected_output" placeholder="expected output">{{$data['expected_output']}}</textarea>--}}
+{{--            </fieldset>--}}
+{{--            <fieldset>--}}
+{{--                <textarea name="default_code" placeholder="default code">{{$data['default_code']}}</textarea>--}}
+{{--            </fieldset>--}}
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
             </fieldset>

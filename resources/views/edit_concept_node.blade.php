@@ -153,9 +153,9 @@
         }
     </style>
 </head>
-<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
+<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
     <div class="container">
-        <form id="contact" action="http://127.0.0.1:8000/concept_nodes/edit_from_view/{{$data['id']}}" method="post">
+        <form id="contact" action="http://54.158.36.225:8000/concept_nodes/edit_from_view/{{$data['id']}}" method="post">
             <h3>Edit Concept Node</h3>
             <fieldset>
                 <input placeholder="Concept Node Name" name="name" type="text" tabindex="1" required autofocus

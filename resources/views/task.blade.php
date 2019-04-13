@@ -182,7 +182,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200)
                 {
-                    alert(this.responseText);
+                    // alert(this.responseText);
                     alert("success");
                     // setTestResult(JSON.parse(this.responseText));
                 }

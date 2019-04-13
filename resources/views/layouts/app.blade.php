@@ -179,27 +179,31 @@
         }
 
         .links {
-            border-radius: 26px;
-            padding: 40px 40px;
-            width: 200px;
-            height: 30px;
-            text-align: center;
-            margin: 20px;
-            /*padding-top: 10%;*/
-            /*background:rgba(238, 192, 238, 0.959);*/
-            background: lightseagreen;
-            display: inline-block;
-            padding: 18px 28px;
-            font-size: 18px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            /*background-color: #4CAF50;*/
-            border: none;
-            /*border-radius: 15px;*/
-            box-shadow: 0 9px #999;
+            /*border-radius: 26px;*/
+            /*padding: 40px 40px;*/
+            /*width: 200px;*/
+            /*height: 30px;*/
+            /*text-align: center;*/
+            /*margin: 20px;*/
+            /*!*padding-top: 10%;*!*/
+            /*!*background:rgba(238, 192, 238, 0.959);*!*/
+            /*background: lightseagreen;*/
+            /*display: inline-block;*/
+            /*padding: 18px 28px;*/
+            /*font-size: 18px;*/
+            /*cursor: pointer;*/
+            /*text-align: center;*/
+            /*text-decoration: none;*/
+            /*outline: none;*/
+            /*color: #fff;*/
+            /*!*background-color: #4CAF50;*!*/
+            /*border: none;*/
+            /*!*border-radius: 15px;*!*/
+            /*box-shadow: 0 9px #999;*/
+            background: rgba(25,118,210,0.4);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding: 10px 10px;
         }
 
         .links:hover{
@@ -255,6 +259,7 @@
     </style>
 </head>
     {{--<body style="background:rgba(29,39,54,.16)">--}}
+{{--http://54.158.36.225:8000/concept_nodes/view/--}}
     <body style="background-image: url('images/home_bg5.jpg')">
 
 <div>

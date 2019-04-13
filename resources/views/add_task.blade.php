@@ -1,6 +1,6 @@
 @include('layouts.session_auth')
-
-
+<html>
+<head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
     * {
@@ -21,8 +21,11 @@
         font-weight: 100;
         font-size: 12px;
         line-height: 30px;
-        color: #777;
-        background: #4CAF50;
+        /*color: #777;*/
+        /*background: #4CAF50;*/
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 1;
     }
 
     .container {
@@ -103,7 +106,8 @@
         cursor: pointer;
         width: 100%;
         border: none;
-        background: #4CAF50;
+        /*background: #4CAF50;*/
+        background: #1f6fb2;
         color: #FFF;
         margin: 0 0 5px;
         padding: 10px;
@@ -147,7 +151,8 @@
         color: #888;
     }
 </style>
-
+</head>
+<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
 <div class="container">
     <form id="contact" action="http://54.158.36.225:8000/tasks/tasks/create_from_view/{{$conceptNode['id']}}" method="post">
         <h3>Create task for {{$conceptNode['name']}}</h3>
@@ -174,3 +179,5 @@
         </fieldset>
     </form>
 </div>
+</body>
+</html>

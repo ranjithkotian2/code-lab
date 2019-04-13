@@ -46,7 +46,11 @@
             margin: auto;
         }
         .carousel-caption h3 {
-            color: ghostwhite !important;
+            color: black !important;
+
+        }
+        .carousel-caption p {
+            color: black !important;
 
         }
         @media (max-width: 600px) {
@@ -157,6 +161,7 @@
         textarea {
             resize: none;
         }
+
     </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -219,8 +224,8 @@
         <div class="item">
             <img src="images/welcome2.jpeg" alt="Los Angeles" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>LA</h3>
-                <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                <h3>Learn Concept by Concept</h3>
+                <p>We let you learn from scratch!</p>
             </div>
         </div>
     </div>
@@ -239,8 +244,14 @@
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
     <h3>CODE LAB</h3>
-    <p><em>We love music!</em></p>
-    <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p><em>Concept Graph with Code Lab</em></p>
+    <p>A “Concept Graph” is a dependency graph of concept nodes.
+        A “Code Lab” is a way of learning a coding concept interactively.
+        A student, anyone for that matter, who has started to learn a subject, say Data Structures and Algorithms, needs to learn a bunch of concepts.
+        A bottom-up way of learning involves learning a huge set of concepts before attempting to solve a reasonably complex problem.
+        Instead, if one starts with a problem at hand, a top-down approach lets them learn all and only the concepts needed to solve the problem at hand.
+        A concept graph of the subject enables one to learn any concept in the subject effectively.
+    </p>
     <br>
     <!-- <div class="row">
       <div class="col-sm-4">

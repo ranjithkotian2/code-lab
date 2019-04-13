@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+<html>
+<head>
     <style type="text/css" media="screen">
         #editor {
             width: 615px;
@@ -103,8 +104,14 @@
 
         .des {
             border-style: outset;
+            border-color: gray;
+        }
+        body{
+            color: black;
+            background-color: rgba(29,39,54,.16);
         }
     </style>
+    <head>
 
     <div id="concept">
         <div>
@@ -113,7 +120,7 @@
                     {{$task['problem_statement']}}
                 </h2>
 
-                <h3>
+                <h3 class="des">
                     {{$task['description']}}
                 </h3>
             </div>
@@ -199,6 +206,9 @@
             xhttp.send(JSON.stringify(input));
         }
     </script>
+    </head>
+    </body>
+    </html>
 
 @endsection
 

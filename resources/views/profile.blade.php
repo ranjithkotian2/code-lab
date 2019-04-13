@@ -114,29 +114,29 @@
                     routeToHome();
                 }
             };
-            xhttp.open("POST", "http://127.0.0.1:8000/user/logout", true);
+            xhttp.open("POST", "http://54.158.36.225:8000/user/logout", true);
 
             xhttp.send();
         }
 
         function loadCreateNewNode() {
-            document.location.href = "http://127.0.0.1:8000/concept_nodes/create_view";
+            document.location.href = "http://54.158.36.225:8000/concept_nodes/create_view";
         }
 
         function routeToHome() {
-            document.location.href = "http://127.0.0.1:8000/";
+            document.location.href = "http://54.158.36.225:8000/";
         }
 
         function loadAddedConceptNode() {
-            document.location.href = "http://127.0.0.1:8000/concept_nodes/user/added_view";
+            document.location.href = "http://54.158.36.225:8000/concept_nodes/user/added_view";
         }
 
         function getAddSuperUserPage() {
-            document.location.href = "http://127.0.0.1:8000/add_super_user";
+            document.location.href = "http://54.158.36.225:8000/add_super_user";
         }
 
         function getAddAdminPage() {
-            document.location.href = "http://127.0.0.1:8000/add_admin";
+            document.location.href = "http://54.158.36.225:8000/add_admin";
         }
     </script>
     </body>

@@ -157,12 +157,12 @@
         }
     </style>
 </head>
-<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
+<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
     <div class="container">
         <form id="contact" action="http://127.0.0.1:8000/concept_nodes/create_from_view" method="post">
             <h3>Create Concept Node</h3>
             <fieldset>
-                <input placeholder="Concept Node Name" name="name" type="text" tabindex="1" required autofocus>
+                <input placeholder="Concept Node Name in Capitals" name="name" type="text" tabindex="1" required autofocus>
             </fieldset>
             <fieldset>
                 <textarea placeholder="Description" name="description" tabindex="2" ></textarea>

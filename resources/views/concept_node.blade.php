@@ -103,9 +103,20 @@
 
     .des {
         border-style: outset;
+        border-color: gray;
     }
+    body{
+        color: black;
+        background-color: rgba(29,39,54,.16);
+    }
+    /*.des h2{*/
+    /*    text-align: center;*/
+    /*}*/
+    /*#nodes{*/
+    /*    align-content: center;*/
+    /*}*/
 </style>
-
+<body>
 <div id="concept">
 	<div>
         <h1 class="crimson">
@@ -119,13 +130,14 @@
         <iframe width="560" height="315" src="{{$data['video_url']}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
         <h2>
-                {{$data['problem_statement']}}
+               PROBLEM STATEMENT : {{$data['problem_statement']}}
         </h2>
         </div>
     </div>
 </div>
 
-<h2>Tasks:</h2>
+<div class="des">
+<h2>TASKS FOR {{$data['name']}}:</h2>
 
     <div id="nodes">
         @php
@@ -137,8 +149,8 @@
             }
         @endphp
     </div>
-
 </div>
+
 <script src="http://127.0.0.1:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
@@ -206,5 +218,5 @@
         xhttp.send(JSON.stringify(input));
     }
 </script>
-
+</body>
 @endsection

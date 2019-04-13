@@ -150,7 +150,6 @@
         @endphp
     </div>
 </div>
-
 <script src="http://54.158.36.225:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
@@ -201,7 +200,7 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200)
             {
-                alert(this.responseText);
+                // alert(this.responseText);
                 alert("success");
                 // setTestResult(JSON.parse(this.responseText));
             }

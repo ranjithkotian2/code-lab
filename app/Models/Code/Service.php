@@ -2,7 +2,7 @@
 
 namespace App\Models\Code;
 
-use App\Models\ConceptNode;
+use App\Models\Task;
 use App\Models\ConceptNodeSubmission;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -15,15 +15,17 @@ class Service
 
     public function test(array $input, string $id)
     {
-        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+        $conceptNode = (new Task\Service())->fetch($id);
 
         (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
 
         $this->createFile(
-            $conceptNode[ConceptNode\Entity::PROVIDED_CODE] .
+            $conceptNode[Task\Entity::PROVIDED_CODE] .
             $input['code'],
             self::TEST_FILE
         );
+
+
         $out = $this->runFile($input);
 
         return $out;
@@ -31,7 +33,7 @@ class Service
 
     public function submit(array $input, string $id)
     {
-        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+        $conceptNode = (new Task\Service())->fetch($id);
 
         $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
 
@@ -51,7 +53,7 @@ class Service
             }
         }
 
-        if($res != $conceptNode[ConceptNode\Entity::EXPECTED_OUTPUT]){
+        if($res != $conceptNode[Task\Entity::EXPECTED_OUTPUT]){
             throw new BadRequestHttpException("sorry output didn't match");
         }
 
@@ -62,12 +64,12 @@ class Service
 
     protected function getOutputAgainstCustomInput(array $input, string $id)
     {
-        $conceptNode = (new ConceptNode\Service())->fetchConceptNode($id);
+        $conceptNode = (new Task\Service())->fetch($id);
 
-        $input['customInput'] = $conceptNode[ConceptNode\Entity::TEST_CASES];
+        $input['customInput'] = $conceptNode[Task\Entity::TEST_CASES];
 
         $this->createFile(
-            $conceptNode[ConceptNode\Entity::PROVIDED_CODE] .
+            $conceptNode[Task\Entity::PROVIDED_CODE] .
             $input['code'],
             self::TEST_FILE
         );

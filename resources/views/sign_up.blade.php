@@ -52,13 +52,13 @@
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="text" id="password" name="pass" placeholder="*************">
+                    <input class="input100" type="password" id="password" name="pass" placeholder="*************">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
                     <span class="label-input100">Repeat Password</span>
-                    <input class="input100" type="text" id="password" name="pass" placeholder="*************">
+                    <input class="input100" type="password" id="password" name="pass" placeholder="*************">
                     <span class="focus-input100"></span>
                 </div>
 

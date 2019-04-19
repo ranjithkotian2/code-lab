@@ -92,7 +92,9 @@ Route::get('tasks/{id}', 'TaskController@fetch');
 Route::get('tasks/get_add_task_view/{conceptNodeId}', 'TaskController@getAddTaskView');
 Route::post('tasks/tasks/create_from_view/{conceptNodeId}', 'TaskController@createFromView');
 Route::get('tasks/{id}/get_view', 'TaskController@fetchView');
-
+Route::get('tasks/all_tasks/view/{conceptNodeId}', 'TaskController@getAllTasksViewForConceptNode');
+Route::get('tasks/edit_view/{id}', 'TaskController@getEditView');
+Route::post('tasks/edit_from_view/{id}', 'TaskController@editFromView');
 
 
 Auth::routes();

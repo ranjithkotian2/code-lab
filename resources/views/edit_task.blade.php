@@ -1,5 +1,4 @@
 @include('layouts.session_auth')
-
 <html>
 <head>
     <style>
@@ -26,7 +25,7 @@
             /*background: #4CAF50;*/
             background-repeat: no-repeat;
             background-size: cover;
-            opacity: 0.9;
+            opacity: 1;
         }
 
         .container {
@@ -154,42 +153,31 @@
     </style>
 </head>
 <body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
-    <div class="container">
-        <form id="contact" method = post action="http://54.158.36.225:8000/concept_nodes/edit_from_view/{{$data['id']}}" method="post">
-            <h3>Edit Concept Node</h3>
-            <fieldset>
-                <input placeholder="Concept Node Name" name="name" type="text" tabindex="1" required autofocus
-                value="{{$data['name']}}">
-            </fieldset>
-            <fieldset>
-                <textarea placeholder="Description" name="description" tabindex="2" >{{$data['description']}}</textarea>
-            </fieldset>
-            <fieldset>
-                <textarea placeholder="Problem Statement" name="problem_statement" type="text" tabindex="3" >{{$data['problem_statement']}}</textarea>
-            </fieldset>
-            <fieldset>
-                <input placeholder="youtube embed url" name="video_url" type="url" tabindex="4" value="{{$data['video_url']}}">
-            </fieldset>
-{{--            <fieldset>--}}
-{{--                <textarea placeholder="Test Cases" name="test_cases" tabindex="5">{{$data['test_cases']}}</textarea>--}}
-{{--            </fieldset>--}}
-{{--            <fieldset>--}}
-{{--                Concept Node <input type="radio" name="type" value="concept_node" tabindex="6" checked = {{$data['type'] == 'concept_node'}}> <br>--}}
-{{--                Problem Node <input type="radio" name="type" value="problem_node" tabindex="7" checked = {{$data['type'] == 'problem_node'}}>--}}
-{{--            </fieldset>--}}
-{{--            <fieldset>--}}
-{{--                <textarea placeholder="provided code" name="provided_code" tabindex="8">{{$data['provided_code']}}</textarea>--}}
-{{--            </fieldset>--}}
-{{--            <fieldset>--}}
-{{--                <textarea name="expected_output" placeholder="expected output">{{$data['expected_output']}}</textarea>--}}
-{{--            </fieldset>--}}
-{{--            <fieldset>--}}
-{{--                <textarea name="default_code" placeholder="default code">{{$data['default_code']}}</textarea>--}}
-{{--            </fieldset>--}}
-            <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-            </fieldset>
-        </form>
-    </div>
+<div class="container">
+    <form id="contact" action="http://54.158.36.225:8000/tasks/edit_from_view/{{$task['id']}}" method="post">
+        <h3>Edit task {{$task['problem_statement']}}</h3>
+        <fieldset>
+            <textarea placeholder="Problem Statement" name="problem_statement" type="text" tabindex="3" >{{$task['problem_statement']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <textarea placeholder="Description" name="description" type="text" tabindex="3" >{{$task['description']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <textarea placeholder="Test Cases" name="test_cases" tabindex="5">{{$task['test_cases']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <textarea placeholder="provided code" name="provided_code" tabindex="8">{{$task['provided_code']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <textarea placeholder="default code" name="default_code" tabindex="8">{{$task['default_code']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <textarea name="expected_output" placeholder="expected output">{{$task['expected_output']}}</textarea>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Update</button>
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>

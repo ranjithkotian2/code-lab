@@ -2,8 +2,9 @@
 
 namespace App\Models\Code;
 
+use App\Http\Controllers\ConceptNodeController;
 use App\Models\Task;
-use App\Models\ConceptNodeSubmission;
+use App\Models\TaskSubmission;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class Service
@@ -33,9 +34,9 @@ class Service
 
     public function submit(array $input, string $id)
     {
-        $conceptNode = (new Task\Service())->fetch($id);
+        $task = (new Task\Service())->fetch($id);
 
-        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
+        $taskSubmission = (new TaskSubmission\Service())->updateCodeOfSubmission($input['code'], $id);
 
         $out = $this->getOutputAgainstCustomInput($input, $id);
 
@@ -53,13 +54,19 @@ class Service
             }
         }
 
-        if($res != $conceptNode[Task\Entity::EXPECTED_OUTPUT]){
+        if($res != $task[Task\Entity::EXPECTED_OUTPUT]){
             throw new BadRequestHttpException("sorry output didn't match");
         }
 
-        $conceptNodeSubmission->markCompleted();
+        $taskSubmission->markCompleted();
 
-        $conceptNodeSubmission->saveOrFail();
+        $taskSubmission->saveOrFail();
+
+        (new \App\Models\ConceptNodeSubmission\Service())->checkConceptNodeCompleted(
+            $task->getAttribute(Task\Entity::CONCEPT_NODE_ID)
+        );
+
+        return $taskSubmission;
     }
 
     protected function getOutputAgainstCustomInput(array $input, string $id)

@@ -83,8 +83,7 @@ class ConceptNodeController extends Controller
             return View::make('dependency_not_covered', ["dep" => $dependencies]);
         }
 
-        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->
-            fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($id);
+        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->checkConceptNodeCompleted($id);
 
         $payload['conceptNodeSubmission'] = $conceptNodeSubmission;
 
@@ -119,5 +118,12 @@ class ConceptNodeController extends Controller
         $data = $this->service->update($input, $id);
 
         return view::make('profile', []);
+    }
+
+    public function getConceptNodeSubmission($conceptNodeId)
+    {
+        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->checkConceptNodeCompleted($conceptNodeId);
+
+        return $conceptNodeSubmission;
     }
 }

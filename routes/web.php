@@ -56,12 +56,11 @@ Route::post('concept_nodes/create_from_view', 'ConceptNodeController@createFromV
 Route::get('concept_nodes/user/added_view', 'ConceptNodeController@getAddedView');
 Route::get('concept_nodes/edit_concept_node_view/{id}', 'ConceptNodeController@getEditConceptNodeView');
 Route::post('concept_nodes/edit_from_view/{id}', 'ConceptNodeController@editConceptNodeFromView');
-
 Route::get('concept_nodes/search/user', 'ConceptNodeController@searchConceptNodesByUser');
 Route::get('concept_nodes/search/{keyword}', 'ConceptNodeController@searchConceptNodes');
 Route::get('concept_nodes/search/', 'ConceptNodeController@fetchConceptNodes');
-
 Route::get('concept_nodes/{id}', 'ConceptNodeController@fetchConceptNode');
+Route::get('concept_nodes/concept_node_submissions/{id}', 'ConceptNodeController@getConceptNodeSubmission');
 
 Route::get('dependencies/get_add_dependency_view/{id}', 'DependencyController@getAddDependencyView');
 Route::post('dependencies/get_add_dependency_view/{id}/{dependencyId}', 'DependencyController@addDependency');
@@ -95,6 +94,7 @@ Route::get('tasks/{id}/get_view', 'TaskController@fetchView');
 Route::get('tasks/all_tasks/view/{conceptNodeId}', 'TaskController@getAllTasksViewForConceptNode');
 Route::get('tasks/edit_view/{id}', 'TaskController@getEditView');
 Route::post('tasks/edit_from_view/{id}', 'TaskController@editFromView');
+Route::get('tasks/submissions/{id}', 'TaskController@fetchTaskSubmission');
 
 
 Auth::routes();

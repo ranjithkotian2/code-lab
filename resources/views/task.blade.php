@@ -110,8 +110,13 @@
             color: black;
             background-color: rgba(29,39,54,.16);
         }
+
+        #completed_img {
+            width: 100px;
+        }
     </style>
-    <head>
+    </head>
+<body>
 
     <div id="concept">
         <div>
@@ -123,6 +128,14 @@
                 <h3 class="des">
                     {{$task['description']}}
                 </h3>
+
+                @php
+                    if ($conceptNodeSubmission['completed'] == '1')
+                    {
+                        echo "<img src='http://54.158.36.225:8000/images/right_mark.png' id = 'completed_img'>";
+                    }
+
+                @endphp
             </div>
         </div>
     </div>
@@ -206,9 +219,8 @@
             xhttp.send(JSON.stringify(input));
         }
     </script>
-    </head>
-    </body>
-    </html>
+</body>
+</html>
 
 @endsection
 

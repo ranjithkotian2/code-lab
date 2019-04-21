@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\ConceptNodeSubmission;
+namespace App\Models\TaskSubmission;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,32 +10,33 @@ class Entity extends Model
 {
     const ID                = 'id';
     const USER_ID           = 'user_id';
-    const CONCEPT_NODE_ID   = 'concept_node_id';
+    const TASK_ID           = 'task_id';
     const CODE              = 'code';
     const COMPLETED         = 'completed';
     const COMPLETED_AT      = 'completed_at';
 
-    protected $table = 'concept_node_submissions';
+    protected $table = 'task_submissions';
 
     protected $visible = [
         self::ID,
         self::USER_ID,
-        self::CONCEPT_NODE_ID,
+        self::TASK_ID,
         self::CODE,
         self::COMPLETED,
+
     ];
 
     protected $public = [
         self::ID,
         self::USER_ID,
-        self::CONCEPT_NODE_ID,
+        self::TASK_ID,
         self::CODE,
         self::COMPLETED,
     ];
 
     protected $fillable = [
         self::USER_ID,
-        self::CONCEPT_NODE_ID,
+        self::TASK_ID,
         self::CODE,
         self::COMPLETED,
     ];

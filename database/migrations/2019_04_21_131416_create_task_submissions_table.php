@@ -23,7 +23,7 @@ class CreateTaskSubmissionsTable extends Migration
             $table->boolean(Entity::COMPLETED);
             $table->text(Entity::CODE);
             $table->timestamp(Entity::COMPLETED_AT)
-                  ->default(null);
+                  ->nullable();
         });
     }
 

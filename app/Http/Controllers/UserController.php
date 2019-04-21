@@ -15,6 +15,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->service = new User\Service();
+
+        $this->startSession();
     }
 
     public function create()
@@ -23,7 +25,6 @@ class UserController extends Controller
 
         $data = $this->service->create($input);
 
-        session_start();
         $_SESSION["auth"] = true;
         $_SESSION["id"] = $data[User\Entity::ID];
 
@@ -39,13 +40,11 @@ class UserController extends Controller
 
     public function logout()
     {
-        session_start();
         session_destroy();
     }
 
     public function getProfileView()
     {
-        session_start();
         $user = $this->service->getUser($_SESSION["id"]);
 
         return view('profile', ['userRole' => $user[User\Entity::USER_ROLE]]);
@@ -59,5 +58,12 @@ class UserController extends Controller
     public function promoteToSuperUser($email)
     {
         $this->service->promoteToSuperUser($email);
+    }
+
+    private function startSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 }

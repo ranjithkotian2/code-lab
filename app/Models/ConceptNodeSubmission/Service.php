@@ -5,6 +5,7 @@ namespace App\Models\ConceptNodeSubmission;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\ConceptNode;
+use App\Models\TaskSubmission;
 
 class Service
 {
@@ -13,6 +14,8 @@ class Service
     public function __construct()
     {
         $this->entityRepo = new Repository();
+
+        $this->startSession();
     }
 
     public function fetchConceptNodeSubmissions(): array
@@ -80,6 +83,31 @@ class Service
         return $this->create($input);
     }
 
+    public function checkConceptNodeCompleted(string $conceptNodeId)
+    {
+        $conceptNodeSubmission = $this->fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($conceptNodeId);
+
+        $tasks = (new Task\Service())->fetchForConceptNode($conceptNodeId);
+
+        $completed = true;
+
+        foreach ($tasks as $task)
+        {
+            $taskSubmission = (new TaskSubmission\Service())->fetchOrCreateConceptNodeSubmissionByUserIdAndTaskId($task['id']);
+
+            if($taskSubmission[TaskSubmission\Entity::COMPLETED] != true)
+            {
+                $completed = false;
+            }
+        }
+
+        $conceptNodeSubmission->setAttribute(Entity::COMPLETED, $completed);
+
+        $conceptNodeSubmission->saveOrFail();
+
+        return $conceptNodeSubmission;
+    }
+
     public function updateCodeOfSubmission(string $code, string $conceptNodeId)
     {
         $conceptNodeSubmission = $this->fetchOrCreateConceptNodeSubmissionByUserIdAndConceptNodeId($conceptNodeId);
@@ -119,15 +147,13 @@ class Service
 
     protected function getUserIdFromSession()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         return $_SESSION['id'];
     }
 
     public function isUserCompleted(string $conceptNodeId): bool
     {
         $conceptNodeSubmissions = $this->fetchConceptNodeSubmissions();
+
         foreach ($conceptNodeSubmissions as $conceptNodeSubmission)
         {
             if(($conceptNodeSubmission[Entity::CONCEPT_NODE_ID] == $conceptNodeId) and $_SESSION['id'] == $conceptNodeSubmission[Entity::USER_ID])
@@ -138,5 +164,12 @@ class Service
         }
 
         return false;
+    }
+
+    private function startSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 }

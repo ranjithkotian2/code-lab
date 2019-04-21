@@ -7,7 +7,7 @@ use Request;
 
 use App\Models\Task;
 use App\Models\ConceptNode;
-use App\Models\ConceptNodeSubmission;
+use App\Models\TaskSubmission;
 
 class TaskController
 {
@@ -70,10 +70,18 @@ class TaskController
     {
         $data = $this->service->fetch($id);
 
-        $conceptNodeSubmission = (new ConceptNodeSubmission\Service())->
-        fetchOrCreateConceptNodeSubmissionByUserIdAndTaskId($id);
+        $conceptNodeSubmission = (new TaskSubmission\Service())->
+            fetchOrCreateConceptNodeSubmissionByUserIdAndTaskId($id);
 
         return View::make('task', ['task' => $data, 'conceptNodeSubmission' => $conceptNodeSubmission]);
+    }
+
+    public function fetchTaskSubmission($id)
+    {
+        $taskSubmission = (new TaskSubmission\Service())->
+        fetchOrCreateConceptNodeSubmissionByUserIdAndTaskId($id);
+
+        return response()->json($taskSubmission);
     }
 
     public function getAllTasksViewForConceptNode($conceptNodeId)

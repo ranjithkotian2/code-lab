@@ -109,6 +109,11 @@
         color: black;
         background-color: rgba(29,39,54,.16);
     }
+
+    #completed_img {
+        width: 100px;
+    }
+
     /*.des h2{*/
     /*    text-align: center;*/
     /*}*/
@@ -116,11 +121,17 @@
     /*    align-content: center;*/
     /*}*/
 </style>
-<body>
+<body onload="getS()">
 <div id="concept">
 	<div>
         <h1 class="crimson">
             {{$data['name']}}
+            @php
+                if ($conceptNodeSubmission['completed'] == true)
+                {
+                    echo "<img src='http://54.158.36.225:8000/images/right_mark.png' id = 'completed_img'>";
+                }
+            @endphp
         </h1>
         {{--<h2>Type: {{$data['type']}}</h2>--}}
         <h3 class="des">
@@ -150,71 +161,41 @@
         @endphp
     </div>
 </div>
-<script src="http://54.158.36.225:8000/vardot/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/c_cpp");
-
-    function testCode() {
-        var editor = ace.edit("editor");
-        var customInput = document.getElementById("custom_input").value;
-        getCodeOutput(editor.getValue(), customInput);
+    function getS() {
+        @php
+            foreach ($tasks as $task)
+            {
+                echo "getStatus({$task['id']});";
+            }
+        @endphp
     }
 
-    function getCodeOutput(code, customInput) {
+    function getStatus(id) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                setTestResult(JSON.parse(this.responseText));
+                var res = JSON.parse(this.responseText);
+
+                setTask(id, res);
             }
         };
-        xhttp.open("POST", "http://54.158.36.225:8000/code/test/{{$data['id']}}", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-
-        var input = {};
-        input.code = code;
-        input.customInput = customInput;
-        xhttp.send(JSON.stringify(input));
+        xhttp.open("GET", "http://54.158.36.225:8000/tasks/submissions/" + id, true);
+        // xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
     }
 
-    function setTestResult(res) {
-        var testResult = document.getElementById("test_result");
-        testResult.style.visibility = 'visible';
-        if(res.code != 0)
+    function setTask(id, task) {
+        const taskDiv = document.getElementById(id);
+
+        if(task.completed == 1)
         {
-            testResult.style.background = 'red';
+            taskDiv.style.background = 'green';
         }
         else
         {
-            testResult.style.background = 'white';
+            taskDiv.style.background = 'red';
         }
-        testResult.innerText = res.result;
-    }
-
-    function submitCode() {
-        var editor = ace.edit("editor");
-        var code = editor.getValue();
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200)
-            {
-                // alert(this.responseText);
-                alert("success");
-                // setTestResult(JSON.parse(this.responseText));
-            }
-            else if(this.readyState == 4)
-            {
-                alert('some test cases did not pass!!!')
-            }
-        };
-        xhttp.open("POST", "http://54.158.36.225:8000/code/submit/{{$data['id']}}", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-
-        var input = {};
-        input.code = code;
-        xhttp.send(JSON.stringify(input));
     }
 </script>
 </body>

@@ -40,7 +40,9 @@ class Service
             if(($user === null) or ($user[Entity::PASSWORD] !== $input[Entity::PASSWORD])){
                 throw new Exception();
             }
-            session_start();
+
+            $this->startSession();
+
             $_SESSION["auth"] = true;
             $_SESSION[Entity::ID] = $user[Entity::ID];
             $_SESSION[Entity::USER_ROLE] = $user[Entity::USER_ROLE];
@@ -77,6 +79,13 @@ class Service
             $user->setUserRole(Role::SUPER_USER);
 
             $user->saveOrFail();
+        }
+    }
+
+    private function startSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
     }
 }

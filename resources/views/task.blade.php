@@ -114,6 +114,14 @@
         #completed_img {
             width: 100px;
         }
+
+        #test_result {
+            background: black;
+            color: whitesmoke;
+            height: 200px;
+            width: 500px;
+        }
+
     </style>
     </head>
 <body>
@@ -133,6 +141,10 @@
                     if ($conceptNodeSubmission['completed'] == '1')
                     {
                         echo "<img src='http://54.158.36.225:8000/images/right_mark.png' id = 'completed_img'>";
+                    }
+                    else
+                    {
+                        echo "<img src='http://54.158.36.225:8000/images/right_mark.png' id = 'completed_img' hidden = true>";
                     }
 
                 @endphp
@@ -169,6 +181,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     setTestResult(JSON.parse(this.responseText));
+                    // alert(this.responseText);
                 }
             };
             xhttp.open("POST", "http://54.158.36.225:8000/code/test/{{$task['id']}}", true);
@@ -185,11 +198,11 @@
             testResult.style.visibility = 'visible';
             if(res.code != 0)
             {
-                testResult.style.background = 'red';
+                testResult.style.color = 'red';
             }
             else
             {
-                testResult.style.background = 'white';
+                testResult.style.color = 'white';
             }
             testResult.innerText = res.result;
         }
@@ -203,7 +216,8 @@
                 if (this.readyState == 4 && this.status == 200)
                 {
                     // alert(this.responseText);
-                    alert("success");
+                    // alert("Correct Answer");
+                    postSuccess();
                     // setTestResult(JSON.parse(this.responseText));
                 }
                 else if(this.readyState == 4)
@@ -217,6 +231,14 @@
             var input = {};
             input.code = code;
             xhttp.send(JSON.stringify(input));
+        }
+
+        function postSuccess() {
+            var img = document.getElementById("completed_img");
+
+            img.hidden = false;
+
+            alert("Correct Answer");
         }
     </script>
 </body>

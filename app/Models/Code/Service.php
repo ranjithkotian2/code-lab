@@ -97,7 +97,9 @@ class Service
 
         $error = "";
         $code = 0;
+
         exec("gcc -o myc1 " . self::TEST_FILE . " 2>&1", $error, $code);
+
         if($code !== 0)
         {
             $result['result'] = $error;

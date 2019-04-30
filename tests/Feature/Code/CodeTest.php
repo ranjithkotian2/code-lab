@@ -13,5 +13,17 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CodeTest extends TestCase
 {
+    public function testCode1Test()
+    {
+        $response = $this->get('code/test/{nodeId}');
+
+        $response->assertStatus(200);
+    }
+    public function testCodeSubmitTest()
+    {
+        $response = $this->get('code/submit/{nodeId}');
+
+        $response->assertStatus(200);
+    }
 
 }

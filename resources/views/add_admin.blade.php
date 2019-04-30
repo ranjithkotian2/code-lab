@@ -126,7 +126,7 @@
             }
         };
 
-        xhttp.open("POST", "http://54.158.36.225:8000/user/promote_to_admin/"+ email, true);
+        xhttp.open("POST", "http://127.0.0.1:8000/user/promote_to_admin/"+ email, true);
         xhttp.send();
     }
 </script>

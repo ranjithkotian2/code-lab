@@ -56,11 +56,7 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <span class="label-input100">Repeat Password</span>
-                    <input class="input100" type="password" id="repeat_password" name="pass" placeholder="*************">
-                    <span class="focus-input100"></span>
-                </div>
+
 
                 <label>
                     <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -112,14 +108,15 @@
                 routeToHome();
             }
         };
-        xhttp.open("POST", "http://54.158.36.225:8000/user", true);
+        xhttp.open("POST", "http://127.0.0.1:8000/user", true);
         xhttp.setRequestHeader("Content-type", "application/json");
 
         xhttp.send(JSON.stringify(data));
     }
 
     function routeToHome() {
-        document.location.href = "http://54.158.36.225:8000/";
+
+        document.location.href = "http://127.0.0.1:8000/";
     }
 </script>
 </body>

@@ -129,7 +129,7 @@
             @php
                 if ($conceptNodeSubmission['completed'] == true)
                 {
-                    echo "<img src='http://54.158.36.225:8000/images/right_mark.png' id = 'completed_img'>";
+                    echo "<img src='http://127.0.0.1:8000/images/right_mark.png' id = 'completed_img'>";
                 }
             @endphp
         </h1>
@@ -154,7 +154,7 @@
         @php
             foreach ($tasks as $task)
             {
-                echo "<div class='links'><a class='link_a' href='http://54.158.36.225:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
+                echo "<div class='links'><a class='link_a' href='http://127.0.0.1:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
                         {$task['problem_statement']}
                         </h1></a></div>";
             }
@@ -180,7 +180,7 @@
                 setTask(id, res);
             }
         };
-        xhttp.open("GET", "http://54.158.36.225:8000/tasks/submissions/" + id, true);
+        xhttp.open("GET", "http://127.0.0.1:8000/tasks/submissions/" + id, true);
         // xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }

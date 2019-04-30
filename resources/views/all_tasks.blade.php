@@ -300,7 +300,7 @@
     @php
         foreach ($tasks as $task)
         {
-            echo "<div class='links'><a class='link_a' href='http://54.158.36.225:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
+            echo "<div class='links'><a class='link_a' href='http://127.0.0.1:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
                     {$task['problem_statement']}
                     </h1></a><button id = 'edit_bt' value='{$task['id']}' onclick='loadEditPage({$task['id']})'>Edit</button>
                     </h1></a></div>";
@@ -312,7 +312,7 @@
 
     <script>
         function loadEditPage(id) {
-            document.location.href = "http://54.158.36.225:8000/tasks/edit_view/" + id;
+            document.location.href = "http://127.0.0.1:8000/tasks/edit_view/" + id;
         }
     </script>
 

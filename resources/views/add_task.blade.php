@@ -152,9 +152,9 @@
     }
 </style>
 </head>
-<body style="background-image: url('http://54.158.36.225:8000/images/home_bg4.jpg')">
+<body style="background-image: url('http://127.0.0.1:8000/images/home_bg4.jpg')">
 <div class="container">
-    <form id="contact" action="http://54.158.36.225:8000/tasks/tasks/create_from_view/{{$conceptNode['id']}}" method="post">
+    <form id="contact" action="http://127.0.0.1:8000/tasks/tasks/create_from_view/{{$conceptNode['id']}}" method="post">
         <h3>Create task for {{$conceptNode['name']}}</h3>
         <fieldset>
             <textarea placeholder="Problem Statement" name="problem_statement" type="text" tabindex="3" ></textarea>

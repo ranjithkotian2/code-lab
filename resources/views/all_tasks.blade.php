@@ -1,6 +1,7 @@
-<html>
-<head>
-    <title>codelab</title>
+@extends('layouts.app')
+
+@section('content')
+
 <style type="text/css" media="screen">
     #editor {
         width: 615px;
@@ -12,6 +13,7 @@
     }
     .crimson{
         color: crimson;
+        text-align: -webkit-center;
     }
     .des{
         margin-top: 5%;
@@ -42,10 +44,77 @@
         float: left;
     }
 
-    input {
-        float: left;
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
     }
 
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+    #right{
+        float: right;
+    }
+    button {
+        background: #3d4852;
+    }
+
+    input[type=text] {
+        font-size: 20px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    #test_button, #submit_button {
+        box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
+        border: 0;
+        border-radius: 5px;
+        text-align: center;
+        width: 110px;
+        color: #fff;
+        background-color: #5bc0de;
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        vertical-align: middle;
+        touch-action: manipulation;
+        background-image: none;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        box-sizing: border-box;
+        align-items: flex-start;
+    }
+
+    #test_button:hover{
+        background-color: #1d68a7;
+    }
+
+    #submit_button:hover{
+        background-color: #1d68a7;
+    }
+
+    .des {
+        border-style: outset;
+        border-color: gray;
+    }
+    body{
+        color: black;
+        background-color: rgba(29,39,54,.16);
+    }
+    /*.des h2{*/
+    /*    text-align: center;*/
+    /*}*/
+    /*#nodes{*/
+    /*    align-content: center;*/
+    /*}*/
     li a, li button {
         display: block;
         color: white;
@@ -188,14 +257,14 @@
     #content{
         padding: 60px;
     }
-    #edit_bt, #update_bt, #add_task_bt, #all_tasks_bt{
+    #edit_bt{
         box-shadow: 0 1.5px 4px rgba(0,0,0,0.34), 0 1.5px 6px rgba(0,0,0,0.32);
         border: 0;
         border-radius: 15px;
         text-align: center;
         width: 150px;
         color: #fff;
-       /* background-color: #5bc0de; */
+        /* background-color: #5bc0de; */
         background-color: blueviolet;
         display: inline-block;
         margin:10px;
@@ -210,9 +279,9 @@
         align-items: flex-start;
 
     }
-    #edit_bt:hover, #update_bt:hover, #add_task_bt:hover, #all_tasks_bt:hover{
+    #edit_bt:hover{
         background-color: #1d68a7;
-       /* background-color: darkslateblue; */
+        /* background-color: darkslateblue; */
 
     }
     body{
@@ -223,72 +292,28 @@
         opacity: 0.9;
     }
 </style>
-</head>
-<body style="background-image: url('http://54.158.36.225:8000/images/home_bg9.jpg')">
-{{-- <body style="background:rgba(29,39,54,.16)"> --}}
-    <div id="content">
 
-    </div>
+
+<div class="des">
+    <h2>TASKS FOR {{$conceptNode['name']}}:</h2>
+<div id="nodes">
+    @php
+        foreach ($tasks as $task)
+        {
+            echo "<div class='links'><a class='link_a' href='http://54.158.36.225:8000/tasks/{$task['id']}/get_view'><h1 class='link_name' id = {$task['id']}>
+                    {$task['problem_statement']}
+                    </h1></a><button id = 'edit_bt' value='{$task['id']}' onclick='loadEditPage({$task['id']})'>Edit</button>
+                    </h1></a></div>";
+        }
+    @endphp
+</div>
+
+</div>
 
     <script>
-        fetchResults();
-        function fetchResults() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    clearPage();
-                    var res = JSON.parse(this.responseText);
-                    for(var i = 0; i < res.length; i++)
-                    {
-                        addConceptNode(res[i]);
-                    }
-                }
-            };
-            xhttp.open("GET", "http://54.158.36.225:8000/concept_nodes/search/user", true);
-            // xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send();
-        }
-
-        function clearPage() {
-            document.getElementById("content").innerHTML = "";
-            var superParent = document.getElementById("content");
-            var parent = document.createElement('nodes');
-            parent.id = "nodes";
-            superParent.appendChild(parent);
-        }
-
-        function addConceptNode(conceptNode) {
-            var parent = document.getElementById("nodes");
-            var newNode = document.createElement('div');
-            newNode.classList.add("links");
-            newNode.innerHTML = "<a href='http://54.158.36.225:8000/concept_nodes/view/"+ conceptNode['id'] +"' class='link_a'><h1 class='link_name' id = "+ conceptNode['id'] +">"+
-                conceptNode['name']
-                + "</h1></a><button id = 'edit_bt' value='"+ conceptNode['id'] +"' onclick='loadEditPage(" + conceptNode['id'] + ")'>Edit</button>"
-                + "<button id = 'update_bt' value='"+ conceptNode['id'] +"' onclick='loadAddDependencyPage(" + conceptNode['id'] + ")'>Add Dependency</button>"
-                + "<button id = 'add_task_bt' value='"+ conceptNode['id'] +"' onclick='loadAddTaskPage(" + conceptNode['id'] + ")'>Add Task</button>"
-                + "<button id = 'all_tasks_bt' value='"+ conceptNode['id'] +"' onclick='loadAllTasks(" + conceptNode['id'] + ")'>All Tasks</button>";
-            parent.appendChild(newNode);
-        }
-
-        function loadEditPage(id)
-        {
-            document.location.href = "http://54.158.36.225:8000/concept_nodes/edit_concept_node_view/" + id;
-        }
-
-        function loadAddDependencyPage(id)
-        {
-            document.location.href = "http://54.158.36.225:8000/dependencies/get_add_dependency_view/" + id;
-        }
-
-        function loadAddTaskPage(id)
-        {
-            document.location.href = "http://54.158.36.225:8000/tasks/get_add_task_view/" + id;
-        }
-
-        function loadAllTasks(id) {
-            document.location.href = "http://54.158.36.225:8000/tasks/all_tasks/view/" + id;
+        function loadEditPage(id) {
+            document.location.href = "http://54.158.36.225:8000/tasks/edit_view/" + id;
         }
     </script>
-</body>
 
-</html>
+@endsection

@@ -52,4 +52,12 @@ class Service
         }
         return $entities;
     }
+
+    public function update(array $input, string $id)
+    {
+        $entity = $this->entityRepo->fetch($id);
+        $entity->fill($input);
+        $entity->saveOrFail();
+        return $entity;
+    }
 }
